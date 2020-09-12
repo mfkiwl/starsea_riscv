@@ -1,0 +1,29 @@
+ifeq ($(OS),Windows_NT)
+    ARCH := Windows64
+else
+    ARCH := Linux64
+endif
+
+TARGET_SIM   ?= 
+TARGET_FLAGS ?= 
+
+COVERTYPE ?= basic
+
+RUN_TARGET ?= 
+
+RISCV_PREFIX   ?= riscv32-unknown-elf-
+RISCV_GCC      ?= $(RISCV_PREFIX)gcc
+RISCV_OBJDUMP  ?= $(RISCV_PREFIX)objdump
+RISCV_OBJCOPY  ?= $(RISCV_PREFIX)objcopy
+#RISCV_GCC_OPTS ?= -static -mcmodel=medany -fvisibility=hidden -nostdlib -nostartfiles -DPRIV_MISA_S=0 -DPRIV_MISA_U=0 $(RVTEST_DEFINES)
+RISCV_GCC_OPTS ?= -static -mcmodel=medany -fvisibility=hidden -nostdlib -nostartfiles  $(RVTEST_DEFINES)
+
+COMPILE_TARGET=\
+    $$(RISCV_GCC) $(1) $$(RISCV_GCC_OPTS) \
+        -I$(ROOTDIR)/riscv-test-env/ \
+        -I$(ROOTDIR)/riscv-test-env/p/ \
+        -I$(TARGETDIR)/$(RISCV_TARGET)/ \
+        -T$(ROOTDIR)/riscv-test-env/p/link.ld $$(<) \
+        -o $$(@); \
+    $$(RISCV_OBJDUMP) -D $$(@) > $$(@).objdump; \
+    $$(RISCV_OBJCOPY) $$(@) -O ihex $$(@).objcopy
