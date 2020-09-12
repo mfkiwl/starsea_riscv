@@ -1,0 +1,48 @@
+#!/bin/bash -f
+
+
+#cp -rf ../cases/$1/* ./
+
+list=`ls ../../riscv-compliance-master/work`
+for file in $list
+do
+ if [ "${file##*.}"x = "objcopy"x ];then
+  echo $file
+  case_name=${file%.*.*}
+  echo $case_name
+   rm -rf simv.daidir/.vcs.timestamp
+   sleep 1
+  echo "remove"
+   python ../../riscv-compliance-master/gen_mif.py ../../riscv-compliance-master/work/$file
+   PID=$!; wait ${PID}
+  
+  vcs  -sverilog -full64 -f ../flist \
+    +lint=TFIPC-L \
+    -P $Verdi_HOME/share/PLI/VCS/LINUX64/novas.tab $Verdi_HOME/share/PLI/VCS/LINUX64/pli.a \
+    -l run.log \
+    +v2k \
+    -debug_all \
+    +notimingcheck \
+    -lca 
+   PID=$!; wait ${PID}
+   sleep 1
+  ./simv -l sim.log
+   PID=$!; wait ${PID}
+   sleep 3
+  
+  cp sig_out $case_name.sigout
+   PID=$!; wait ${PID}
+  diff $case_name.sigout ../../riscv-compliance-master/riscv-test-suite/rv32i/references/$case_name.reference_output 
+  
+  if [ "$?" == "0" ];then
+    echo "ok"
+  else
+    echo "fail"
+  fi
+
+
+
+ fi
+done
+
+

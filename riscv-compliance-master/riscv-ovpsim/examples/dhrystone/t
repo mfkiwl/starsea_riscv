@@ -1,0 +1,41 @@
+Imperas riscvOVPsim
+
+
+CpuManagerFixedPlatform (64-Bit) v20200810.0 Open Virtual Platform simulator from www.IMPERAS.com.
+Copyright (c) 2005-2020 Imperas Software Ltd.  Contains Imperas Proprietary Information.
+Licensed Software, All Rights Reserved.
+Visit www.IMPERAS.com for multicore debug, verification and analysis solutions.
+
+CpuManagerFixedPlatform started: Tue Sep  8 21:59:14 2020
+
+
+Info (OR_OF) Target 'riscvOVPsim/cpu' has object file read from '../../../work/rv32i/I-SB-01.elf'
+Info (OR_PH) Program Headers:
+Info (OR_PH) Type           Offset     VirtAddr   PhysAddr   FileSiz    MemSiz     Flags Align
+Info (OR_PD) LOAD           0x00001000 0x00000000 0x00000000 0x00000508 0x00000508 RWE   1000
+Info (OR_PD) LOAD           0x00002000 0x40000000 0x40000000 0x00000204 0x00000204 RW-   1000
+Error (RISCV/PK) SYSCALL(unhandled(nr=0))
+Info 
+Info ---------------------------------------------------
+Info CPU 'riscvOVPsim/cpu' STATISTICS
+Info   Type                  : riscv (RV32I)
+Info   Nominal MIPS          : 100
+Info   Final program counter : 0x388
+Info   Simulated instructions: 200
+Info   Simulated MIPS        : run too short for meaningful result
+Info ---------------------------------------------------
+Info 
+Info ---------------------------------------------------
+Info SIMULATION TIME STATISTICS
+Info   Simulated time        : 0.00 seconds
+Info   User time             : 0.01 seconds
+Info   System time           : 0.01 seconds
+Info   Elapsed time          : 0.01 seconds
+Info ---------------------------------------------------
+
+CpuManagerFixedPlatform finished: Tue Sep  8 21:59:14 2020
+
+
+CpuManagerFixedPlatform (64-Bit) v20200810.0 Open Virtual Platform simulator from www.IMPERAS.com.
+Visit www.IMPERAS.com for multicore debug, verification and analysis solutions.
+

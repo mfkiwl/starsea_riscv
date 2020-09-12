@@ -1,0 +1,4 @@
+
+ ./bin/Linux64/riscvOVPsim.exe --trace --variant RV32I --program ../work/I-MISALIGN_LDST-01.elf --override riscvOVPsim/cpu/simulateexceptions=T >t
+
+../../bin/Linux64/riscvOVPsim.exe --trace --variant RV32I --program ../../../work/rv32i/I-MISALIGN_JMP-01.elf >t

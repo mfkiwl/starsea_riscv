@@ -1,0 +1,306 @@
+Info Session started: Wed Sep  9 23:24:59 2020
+
+Info ------------- ENVIRONMENT -------------
+Info LD_LIBRARY_PATH                          = /opt/Synopsys/Verdi2015/share/PLI/VCS/LINUX64:/usr/lib64:/opt/KeySight/ADS2015/adsptolemy/lib.linux_x86_64:/opt/KeySight/ADS2015/lib/linux_x86:/opt/KeySight/ADS2015/adsptolemy/lib.linux_x86:/usr/local/lib:/lib64:/usr/lib64:/opt/KeySight/ADS2015/adsptolemy/lib.linux_x86_64:/opt/KeySight/ADS2015/lib/linux_x86:/opt/KeySight/ADS2015/adsptolemy/lib.linux_x86:
+Info LM_LICENSE_FILE                          = /opt/Concept/License/License.dat
+Info --------------------------------------
+Info -------- FLAGS (from ./bin/Linux64/riscvOVPsim.exe)
+Info --trace
+Info --signaturedump
+Info --variant  RV32I
+Info --program  ../work/I-MISALIGN_LDST-01.elf
+Info --override  riscvOVPsim/cpu/simulateexceptions=T
+Info --logfile  log
+Info --------------------------------------
+Imperas riscvOVPsim
+
+
+CpuManagerFixedPlatform (64-Bit) v20200810.0 Open Virtual Platform simulator from www.IMPERAS.com.
+Copyright (c) 2005-2020 Imperas Software Ltd.  Contains Imperas Proprietary Information.
+Licensed Software, All Rights Reserved.
+Visit www.IMPERAS.com for multicore debug, verification and analysis solutions.
+
+CpuManagerFixedPlatform started: Wed Sep  9 23:24:59 2020
+
+
+Info (OR_OF) Target 'riscvOVPsim/cpu' has object file read from '../work/I-MISALIGN_LDST-01.elf'
+Info (OR_PH) Program Headers:
+Info (OR_PH) Type           Offset     VirtAddr   PhysAddr   FileSiz    MemSiz     Flags Align
+Info (OR_PD) LOAD           0x00001000 0x00000000 0x00000000 0x00000408 0x00000408 RWE   1000
+Info (OR_PD) LOAD           0x00002000 0x40000000 0x40000000 0x00000204 0x00000204 RW-   1000
+Info 'riscvOVPsim/cpu', 0x0000000000000000(_start): 40000297 auipc   t0,0x40000
+Info 'riscvOVPsim/cpu', 0x0000000000000004(_start+4): 01028293 addi    t0,t0,16
+Info 'riscvOVPsim/cpu', 0x0000000000000008(_start+8): 50502423 sw      t0,1288(zero)
+Info 'riscvOVPsim/cpu', 0x000000000000000c(_start+c): 40000297 auipc   t0,0x40000
+Info 'riscvOVPsim/cpu', 0x0000000000000010(_start+10): 0b428293 addi    t0,t0,180
+Info 'riscvOVPsim/cpu', 0x0000000000000014(_start+14): 50502623 sw      t0,1292(zero)
+Info 'riscvOVPsim/cpu', 0x0000000000000018(_start+18): 0480006f j       60
+Info 'riscvOVPsim/cpu', 0x0000000000000060(reset_vector): f1402573 csrr    a0,mhartid
+Info 'riscvOVPsim/cpu', 0x0000000000000064(reset_vector+4): 00051063 bnez    a0,64
+Info 'riscvOVPsim/cpu', 0x0000000000000068(reset_vector+8): 00000297 auipc   t0,0x0
+Info 'riscvOVPsim/cpu', 0x000000000000006c(reset_vector+c): 01028293 addi    t0,t0,16
+Info 'riscvOVPsim/cpu', 0x0000000000000070(reset_vector+10): 30529073 csrw    mtvec,t0
+Info 'riscvOVPsim/cpu', 0x0000000000000074(reset_vector+14): 18005073 csrwi   satp,0
+Info 'riscvOVPsim/cpu', 0x0000000000000078(reset_vector+18): 00000297 auipc   t0,0x0
+Info 'riscvOVPsim/cpu', 0x000000000000007c(reset_vector+1c): 01c28293 addi    t0,t0,28
+Info 'riscvOVPsim/cpu', 0x0000000000000080(reset_vector+20): 30529073 csrw    mtvec,t0
+Info 'riscvOVPsim/cpu', 0x0000000000000084(reset_vector+24): fff00293 addi    t0,zero,-1
+Info 'riscvOVPsim/cpu', 0x0000000000000088(reset_vector+28): 3b029073 csrw    pmpaddr0,t0
+Info 'riscvOVPsim/cpu', 0x000000000000008c(reset_vector+2c): 01f00293 addi    t0,zero,31
+Info 'riscvOVPsim/cpu', 0x0000000000000090(reset_vector+30): 3a029073 csrw    pmpcfg0,t0
+Info 'riscvOVPsim/cpu', 0x0000000000000094(reset_vector+34): 00000297 auipc   t0,0x0
+Info 'riscvOVPsim/cpu', 0x0000000000000098(reset_vector+38): 01828293 addi    t0,t0,24
+Info 'riscvOVPsim/cpu', 0x000000000000009c(reset_vector+3c): 30529073 csrw    mtvec,t0
+Info 'riscvOVPsim/cpu', 0x00000000000000a0(reset_vector+40): 30205073 csrwi   medeleg,0
+Info 'riscvOVPsim/cpu', 0x00000000000000a4(reset_vector+44): 30305073 csrwi   mideleg,0
+Info 'riscvOVPsim/cpu', 0x00000000000000a8(reset_vector+48): 30405073 csrwi   mie,0
+Info 'riscvOVPsim/cpu', 0x00000000000000ac(reset_vector+4c): 00000193 mv      gp,zero
+Info 'riscvOVPsim/cpu', 0x00000000000000b0(reset_vector+50): 00000297 auipc   t0,0x0
+Info 'riscvOVPsim/cpu', 0x00000000000000b4(reset_vector+54): f6c28293 addi    t0,t0,-148
+Info 'riscvOVPsim/cpu', 0x00000000000000b8(reset_vector+58): 30529073 csrw    mtvec,t0
+Info 'riscvOVPsim/cpu', 0x00000000000000bc(reset_vector+5c): 00100513 addi    a0,zero,1
+Info 'riscvOVPsim/cpu', 0x00000000000000c0(reset_vector+60): 01f51513 slli    a0,a0,0x1f
+Info 'riscvOVPsim/cpu', 0x00000000000000c4(reset_vector+64): 00054863 bltz    a0,d4
+Info 'riscvOVPsim/cpu', 0x00000000000000d4(reset_vector+74): 00000297 auipc   t0,0x0
+Info 'riscvOVPsim/cpu', 0x00000000000000d8(reset_vector+78): f2c28293 addi    t0,t0,-212
+Info 'riscvOVPsim/cpu', 0x00000000000000dc(reset_vector+7c): 00028e63 beqz    t0,f8
+Info 'riscvOVPsim/cpu', 0x00000000000000f8(reset_vector+98): 30005073 csrwi   mstatus,0
+Info 'riscvOVPsim/cpu', 0x00000000000000fc(reset_vector+9c): 00002537 lui     a0,0x2
+Info 'riscvOVPsim/cpu', 0x0000000000000100(reset_vector+a0): 80050513 addi    a0,a0,-2048
+Info 'riscvOVPsim/cpu', 0x0000000000000104(reset_vector+a4): 30052073 csrs    mstatus,a0
+Info 'riscvOVPsim/cpu', 0x0000000000000108(reset_vector+a8): 00000297 auipc   t0,0x0
+Info 'riscvOVPsim/cpu', 0x000000000000010c(reset_vector+ac): 01428293 addi    t0,t0,20
+Info 'riscvOVPsim/cpu', 0x0000000000000110(reset_vector+b0): 34129073 csrw    mepc,t0
+Info 'riscvOVPsim/cpu', 0x0000000000000114(reset_vector+b4): f1402573 csrr    a0,mhartid
+Info 'riscvOVPsim/cpu', 0x0000000000000118(reset_vector+b8): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x000000000000011c(begin_testcode): 00000097 auipc   ra,0x0
+Info 'riscvOVPsim/cpu', 0x0000000000000120(begin_testcode+4): 14408093 addi    ra,ra,324
+Info 'riscvOVPsim/cpu', 0x0000000000000124(begin_testcode+8): 30509ff3 csrrw   t6,mtvec,ra
+Info 'riscvOVPsim/cpu', 0x0000000000000128(begin_testcode+c): 40000197 auipc   gp,0x40000
+Info 'riscvOVPsim/cpu', 0x000000000000012c(begin_testcode+10): ed818193 addi    gp,gp,-296
+Info 'riscvOVPsim/cpu', 0x0000000000000130(begin_testcode+14): 40000117 auipc   sp,0x40000
+Info 'riscvOVPsim/cpu', 0x0000000000000134(begin_testcode+18): ee010113 addi    sp,sp,-288
+Info 'riscvOVPsim/cpu', 0x0000000000000138(begin_testcode+1c): 40000097 auipc   ra,0x40000
+Info 'riscvOVPsim/cpu', 0x000000000000013c(begin_testcode+20): ee808093 addi    ra,ra,-280
+Info 'riscvOVPsim/cpu', 0x0000000000000140(begin_testcode+24): 00500293 addi    t0,zero,5
+Info 'riscvOVPsim/cpu', 0x0000000000000144(begin_testcode+28): 00600313 addi    t1,zero,6
+Info 'riscvOVPsim/cpu', 0x0000000000000148(begin_testcode+2c): 0001a203 lw      tp,0(gp)
+Info 'riscvOVPsim/cpu', 0x000000000000014c(begin_testcode+30): 00412023 sw      tp,0(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000150(begin_testcode+34): 0011a203 lw      tp,1(gp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x0000000000000154(begin_testcode+38): 00412223 sw      tp,4(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000158(begin_testcode+3c): 0021a203 lw      tp,2(gp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x000000000000015c(begin_testcode+40): 00412423 sw      tp,8(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000160(begin_testcode+44): 0031a203 lw      tp,3(gp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x0000000000000164(begin_testcode+48): 00412623 sw      tp,12(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000168(begin_testcode+4c): 40000197 auipc   gp,0x40000
+Info 'riscvOVPsim/cpu', 0x000000000000016c(begin_testcode+50): e9c18193 addi    gp,gp,-356
+Info 'riscvOVPsim/cpu', 0x0000000000000170(begin_testcode+54): 40000117 auipc   sp,0x40000
+Info 'riscvOVPsim/cpu', 0x0000000000000174(begin_testcode+58): ec810113 addi    sp,sp,-312
+Info 'riscvOVPsim/cpu', 0x0000000000000178(begin_testcode+5c): 40000097 auipc   ra,0x40000
+Info 'riscvOVPsim/cpu', 0x000000000000017c(begin_testcode+60): ee008093 addi    ra,ra,-288
+Info 'riscvOVPsim/cpu', 0x0000000000000180(begin_testcode+64): 00500293 addi    t0,zero,5
+Info 'riscvOVPsim/cpu', 0x0000000000000184(begin_testcode+68): 00600313 addi    t1,zero,6
+Info 'riscvOVPsim/cpu', 0x0000000000000188(begin_testcode+6c): 00019203 lh      tp,0(gp)
+Info 'riscvOVPsim/cpu', 0x000000000000018c(begin_testcode+70): 00412023 sw      tp,0(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000190(begin_testcode+74): 00119203 lh      tp,1(gp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x0000000000000194(begin_testcode+78): 00412223 sw      tp,4(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000198(begin_testcode+7c): 00219203 lh      tp,2(gp)
+Info 'riscvOVPsim/cpu', 0x000000000000019c(begin_testcode+80): 00412423 sw      tp,8(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001a0(begin_testcode+84): 00319203 lh      tp,3(gp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x00000000000001a4(begin_testcode+88): 00412623 sw      tp,12(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001a8(begin_testcode+8c): 0001d203 lhu     tp,0(gp)
+Info 'riscvOVPsim/cpu', 0x00000000000001ac(begin_testcode+90): 00412823 sw      tp,16(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001b0(begin_testcode+94): 0011d203 lhu     tp,1(gp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x00000000000001b4(begin_testcode+98): 00412a23 sw      tp,20(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001b8(begin_testcode+9c): 0021d203 lhu     tp,2(gp)
+Info 'riscvOVPsim/cpu', 0x00000000000001bc(begin_testcode+a0): 00412c23 sw      tp,24(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001c0(begin_testcode+a4): 0031d203 lhu     tp,3(gp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x00000000000001c4(begin_testcode+a8): 00412e23 sw      tp,28(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001c8(begin_testcode+ac): 40000117 auipc   sp,0x40000
+Info 'riscvOVPsim/cpu', 0x00000000000001cc(begin_testcode+b0): eb010113 addi    sp,sp,-336
+Info 'riscvOVPsim/cpu', 0x00000000000001d0(begin_testcode+b4): 40000097 auipc   ra,0x40000
+Info 'riscvOVPsim/cpu', 0x00000000000001d4(begin_testcode+b8): eb808093 addi    ra,ra,-328
+Info 'riscvOVPsim/cpu', 0x00000000000001d8(begin_testcode+bc): 00000313 mv      t1,zero
+Info 'riscvOVPsim/cpu', 0x00000000000001dc(begin_testcode+c0): 9999a2b7 lui     t0,0x9999a
+Info 'riscvOVPsim/cpu', 0x00000000000001e0(begin_testcode+c4): 99928293 addi    t0,t0,-1639
+Info 'riscvOVPsim/cpu', 0x00000000000001e4(begin_testcode+c8): 00512023 sw      t0,0(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001e8(begin_testcode+cc): 00512223 sw      t0,4(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001ec(begin_testcode+d0): 00512423 sw      t0,8(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001f0(begin_testcode+d4): 00512623 sw      t0,12(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001f4(begin_testcode+d8): 00612023 sw      t1,0(sp)
+Info 'riscvOVPsim/cpu', 0x00000000000001f8(begin_testcode+dc): 00410113 addi    sp,sp,4
+Info 'riscvOVPsim/cpu', 0x00000000000001fc(begin_testcode+e0): 006120a3 sw      t1,1(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x0000000000000200(begin_testcode+e4): 00410113 addi    sp,sp,4
+Info 'riscvOVPsim/cpu', 0x0000000000000204(begin_testcode+e8): 00612123 sw      t1,2(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x0000000000000208(begin_testcode+ec): 00410113 addi    sp,sp,4
+Info 'riscvOVPsim/cpu', 0x000000000000020c(begin_testcode+f0): 006121a3 sw      t1,3(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x0000000000000210(begin_testcode+f4): 40000117 auipc   sp,0x40000
+Info 'riscvOVPsim/cpu', 0x0000000000000214(begin_testcode+f8): e9010113 addi    sp,sp,-368
+Info 'riscvOVPsim/cpu', 0x0000000000000218(begin_testcode+fc): 40000097 auipc   ra,0x40000
+Info 'riscvOVPsim/cpu', 0x000000000000021c(begin_testcode+100): e9808093 addi    ra,ra,-360
+Info 'riscvOVPsim/cpu', 0x0000000000000220(begin_testcode+104): 00000313 mv      t1,zero
+Info 'riscvOVPsim/cpu', 0x0000000000000224(begin_testcode+108): 9999a2b7 lui     t0,0x9999a
+Info 'riscvOVPsim/cpu', 0x0000000000000228(begin_testcode+10c): 99928293 addi    t0,t0,-1639
+Info 'riscvOVPsim/cpu', 0x000000000000022c(begin_testcode+110): 00512023 sw      t0,0(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000230(begin_testcode+114): 00512223 sw      t0,4(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000234(begin_testcode+118): 00512423 sw      t0,8(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000238(begin_testcode+11c): 00512623 sw      t0,12(sp)
+Info 'riscvOVPsim/cpu', 0x000000000000023c(begin_testcode+120): 00611023 sh      t1,0(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000240(begin_testcode+124): 00410113 addi    sp,sp,4
+Info 'riscvOVPsim/cpu', 0x0000000000000244(begin_testcode+128): 006110a3 sh      t1,1(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x0000000000000248(begin_testcode+12c): 00410113 addi    sp,sp,4
+Info 'riscvOVPsim/cpu', 0x000000000000024c(begin_testcode+130): 00611123 sh      t1,2(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000250(begin_testcode+134): 00410113 addi    sp,sp,4
+Info 'riscvOVPsim/cpu', 0x0000000000000254(begin_testcode+138): 006111a3 sh      t1,3(sp)
+Info 'riscvOVPsim/cpu', 0x0000000000000260(_trap_handler): 34102f73 csrr    t5,mepc
+Info 'riscvOVPsim/cpu', 0x0000000000000264(_trap_handler+4): 004f0f13 addi    t5,t5,4
+Info 'riscvOVPsim/cpu', 0x0000000000000268(_trap_handler+8): 341f1073 csrw    mepc,t5
+Info 'riscvOVPsim/cpu', 0x000000000000026c(_trap_handler+c): 34302f73 csrr    t5,mtval
+Info 'riscvOVPsim/cpu', 0x0000000000000270(_trap_handler+10): 003f7f13 andi    t5,t5,3
+Info 'riscvOVPsim/cpu', 0x0000000000000274(_trap_handler+14): 01e0a023 sw      t5,0(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000278(_trap_handler+18): 34202f73 csrr    t5,mcause
+Info 'riscvOVPsim/cpu', 0x000000000000027c(_trap_handler+1c): 01e0a223 sw      t5,4(ra)
+Info 'riscvOVPsim/cpu', 0x0000000000000280(_trap_handler+20): 00808093 addi    ra,ra,8
+Info 'riscvOVPsim/cpu', 0x0000000000000284(_trap_handler+24): 30200073 mret
+Info 'riscvOVPsim/cpu', 0x0000000000000258(begin_testcode+13c): 305f9073 csrw    mtvec,t6
+Info 'riscvOVPsim/cpu', 0x000000000000025c(begin_testcode+140): 02c0006f j       288
+Info 'riscvOVPsim/cpu', 0x0000000000000288(test_end): 00100793 addi    a5,zero,1
+Info 'riscvOVPsim/cpu', 0x000000000000028c(test_end+4): 60f02023 sw      a5,1536(zero)
+Info 'riscvOVPsim/cpu', 0x0000000000000290(end_testcode): 00100073 ebreak
+Error (RISCV/PK) SYSCALL(unhandled(nr=0))
+Info 
+Info ---------------------------------------------------
+Info CPU 'riscvOVPsim/cpu' STATISTICS
+Info   Type                  : riscv (RV32I)
+Info   Nominal MIPS          : 100
+Info   Final program counter : 0x294
+Info   Simulated instructions: 249
+Info   Simulated MIPS        : run too short for meaningful result
+Info ---------------------------------------------------
+Info 
+Info ---------------------------------------------------
+Info SIMULATION TIME STATISTICS
+Info   Simulated time        : 0.00 seconds
+Info   User time             : 0.01 seconds
+Info   System time           : 0.01 seconds
+Info   Elapsed time          : 0.01 seconds
+Info ---------------------------------------------------
+
+CpuManagerFixedPlatform finished: Wed Sep  9 23:24:59 2020
+
+
+CpuManagerFixedPlatform (64-Bit) v20200810.0 Open Virtual Platform simulator from www.IMPERAS.com.
+Visit www.IMPERAS.com for multicore debug, verification and analysis solutions.
+
+Info Session ended: Wed Sep  9 23:24:59 2020
+
