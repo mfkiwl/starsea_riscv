@@ -3,7 +3,7 @@
 
 #cp -rf ../cases/$1/* ./
 
-list=`ls ../../riscv-compliance-master/work`
+list=`ls ../../riscv-compliance-master/work/rv32i`
 for file in $list
 do
  if [ "${file##*.}"x = "objcopy"x ];then
@@ -13,7 +13,7 @@ do
    rm -rf simv.daidir/.vcs.timestamp
    sleep 1
   echo "remove"
-   python ../../riscv-compliance-master/gen_mif.py ../../riscv-compliance-master/work/$file
+   python ../../riscv-compliance-master/gen_mif.py ../../riscv-compliance-master/work/rv32i/$file
    PID=$!; wait ${PID}
   
   vcs  -sverilog -full64 -f ../flist \

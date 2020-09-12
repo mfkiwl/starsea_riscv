@@ -1,0 +1,12 @@
+/home/IC/project/github/starsea_riscv/rtl/core/alu.v
+/home/IC/project/github/starsea_riscv/rtl/core/ctrl.v
+/home/IC/project/github/starsea_riscv/rtl/core/dram.v
+/home/IC/project/github/starsea_riscv/rtl/core/id.v
+/home/IC/project/github/starsea_riscv/rtl/core/iram.v
+/home/IC/project/github/starsea_riscv/rtl/core/machine.v
+/home/IC/project/github/starsea_riscv/rtl/core/pc.v
+/home/IC/project/github/starsea_riscv/rtl/core/regs.v
+/home/IC/project/github/starsea_riscv/rtl/core/starsea_core.v
+/home/IC/project/github/starsea_riscv/rtl/core/wb.v
+/home/IC/project/github/starsea_riscv/rtl/soc/fpga_top.v
+/home/IC/project/github/starsea_riscv/tb/tb.v
