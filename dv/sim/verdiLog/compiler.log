@@ -1,0 +1,22 @@
+*design* DebussyLib (btIdent Verdi3_K-2015.09-SP1-1)
+Command arguments:
+    +define+verilog
+    -f ../flist
+        ../../tb/tb.v
+        ../../rtl/core/alu.v
+        ../../rtl/core/ctrl.v
+        ../../rtl/core/dram.v
+        ../../rtl/core/id.v
+        ../../rtl/core/iram.v
+        ../../rtl/core/machine.v
+        ../../rtl/core/pc.v
+        ../../rtl/core/regs.v
+        ../../rtl/core/starsea_core.v
+        ../../rtl/core/wb.v
+        ../../rtl/soc/fpga_top.v
+    -sv
+
+Highest level modules:
+tb
+
+Total	0 error(s),   0 warning(s)

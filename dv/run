@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+python ../../riscv-compliance-master/gen_mif.py ../../riscv-compliance-master/work/rv32i/I-MISALIGN_LDST-01.elf.objcopy
+vcs  -sverilog -full64 -f ../flist \
+  +lint=TFIPC-L \
+  -P $Verdi_HOME/share/PLI/VCS/LINUX64/novas.tab $Verdi_HOME/share/PLI/VCS/LINUX64/pli.a \
+  -l run.log \
+  +v2k \
+  -debug_all \
+  +notimingcheck \
+  -lca \
+
+./simv -l sim.log
+
+

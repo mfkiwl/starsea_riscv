@@ -1,0 +1,2 @@
+_start:
+  call main

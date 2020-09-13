@@ -319,6 +319,7 @@ alu u_alu
 .dram_addr                    (dram_addr                    ),
 .dram_as                      (dram_as                      ),
 .i_type_load_funct3_wb        (i_type_load_funct3_wb        ),
+.load_misalign_addr           (load_misalign_addr           ),
 .load_misalign_exception      (load_misalign_exception      ),
 .store_misalign_addr          (store_misalign_addr          ),
 .store_misalign_exception     (store_misalign_exception     ),
