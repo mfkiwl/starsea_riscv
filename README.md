@@ -16,6 +16,8 @@ How to simulate riscv compilience tests:
    2. make RISCV_TARGET=starsea
    3. cd dv/sim
    4. ../run_regression | tee log
+   5. gvim log
+   6. search log file, all simulation is ok, no fail
  
 
 Future plan:
