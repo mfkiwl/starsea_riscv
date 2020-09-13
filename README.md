@@ -15,5 +15,5 @@ how to simulate riscv compilience tests:
    1. cd riscv-compliance-master
    2. make RISCV_TARGET=starsea
    3. cd dv/sim
-   4. ../run_regression
+   4. ../run_regression | tee log
  
