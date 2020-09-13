@@ -387,3 +387,219 @@ wvScrollDown -win $_nWave2 0
 wvScrollDown -win $_nWave2 0
 wvScrollDown -win $_nWave2 0
 wvScrollDown -win $_nWave2 0
+verdiWindowResize -win $_Verdi_1 -2 "25" "1896" "771"
+verdiWindowResize -win $_Verdi_1 -2 "25" "1920" "1004"
+verdiWindowResize -win $_Verdi_1 -2 "25" "1896" "771"
+verdiWindowResize -win $_Verdi_1 -2 "25" "1920" "1004"
+verdiWindowResize -win $_Verdi_1 -2 "25" "1896" "771"
+verdiWindowResize -win $_Verdi_1 -2 "25" "1920" "1004"
+wvSetCursor -win $_nWave2 375610179.294390 -snap {("G1" 65)}
+wvDisplayGridCount -win $_nWave2 -off
+wvGetSignalClose -win $_nWave2
+wvReloadFile -win $_nWave2
+srcDeselectAll -win $_nTrace1
+debReload
+srcHBSelect "tb.u_fpga_top.u_starsea_core.u_pc" -win $_nTrace1
+srcSetScope -win $_nTrace1 "tb.u_fpga_top.u_starsea_core.u_pc" -delim "."
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "pc" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+wvZoom -win $_nWave2 5257374.204743 27455176.402545
+wvZoom -win $_nWave2 5539821.658965 6091878.046765
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+srcHBSelect "tb.u_fpga_top.u_starsea_core.u_id" -win $_nTrace1
+srcSetScope -win $_nTrace1 "tb.u_fpga_top.u_starsea_core.u_id" -delim "."
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "inst" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+wvZoom -win $_nWave2 71202.183042 426893.805950
+wvSetCursor -win $_nWave2 273425.933949 -snap {("G1" 68)}
+wvDisplayGridCount -win $_nWave2 -off
+wvGetSignalClose -win $_nWave2
+wvReloadFile -win $_nWave2
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+srcDeselectAll -win $_nTrace1
+srcHBSelect "tb.u_fpga_top.u_starsea_core.u_dram" -win $_nTrace1
+srcSetScope -win $_nTrace1 "tb.u_fpga_top.u_starsea_core.u_dram" -delim "."
+srcShowCalling -win $_nTrace1
+srcSelect -win $_nTrace1 -range {193 193 3 4 1 1}
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_we" -win $_nTrace1
+srcSelect -signal "dram_dout_to_dbus" -win $_nTrace1
+srcSelect -signal "dram_addr" -win $_nTrace1
+srcSelect -toggle -signal "dram_dout_to_dbus" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_wdat" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+verdiWindowResize -win $_Verdi_1 -2 "25" "1896" "771"
+verdiWindowResize -win $_Verdi_1 -2 "25" "1920" "1004"
+wvSetCursor -win $_nWave2 217058.377745 -snap {("G1" 68)}
+srcDeselectAll -win $_nTrace1
+srcSelect -inst "u_dram" -win $_nTrace1
+srcAction -pos 192 2 4 -win $_nTrace1 -name "u_dram" -ctrlKey off
+wvSetCursor -win $_nWave2 319713.160759 -snap {("G1" 67)}
+wvDisplayGridCount -win $_nWave2 -off
+wvGetSignalClose -win $_nWave2
+wvReloadFile -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvZoom -win $_nWave2 144004.705631 535697.504946
+wvZoomOut -win $_nWave2
+wvSetCursor -win $_nWave2 294505.864147 -snap {("G1" 70)}
+wvDisplayGridCount -win $_nWave2 -off
+wvGetSignalClose -win $_nWave2
+wvReloadFile -win $_nWave2
+wvSetCursor -win $_nWave2 222012.112972 -snap {("G1" 71)}
+wvDisplayGridCount -win $_nWave2 -off
+wvGetSignalClose -win $_nWave2
+wvReloadFile -win $_nWave2
+wvSetCursor -win $_nWave2 191202.268723 -snap {("G1" 72)}
+wvSetCursor -win $_nWave2 248291.097773 -snap {("G1" 73)}
+wvSetMarker -win $_nWave2 250000.000000
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_addr" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+wvSelectSignal -win $_nWave2 {( "G1" 75 )} 
+wvSetRadix -win $_nWave2 -format UDec
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_addr>>2" -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcHBSelect "tb.u_fpga_top.u_uart_tx" -win $_nTrace1
+srcSetScope -win $_nTrace1 "tb.u_fpga_top.u_uart_tx" -delim "."
+srcShowCalling -win $_nTrace1
+srcSelect -win $_nTrace1 -range {68 68 24 25 1 1}
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "uart_tvld" -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "uart_tvld" -win $_nTrace1
+srcAction -pos 72 5 7 -win $_nTrace1 -name "uart_tvld" -ctrlKey off
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "reg_bus_we" -win $_nTrace1
+srcAction -pos 53 6 2 -win $_nTrace1 -name "reg_bus_we" -ctrlKey off
+wvSetCursor -win $_nWave2 287709.574974 -snap {("G1" 68)}
+wvDisplayGridCount -win $_nWave2 -off
+wvGetSignalClose -win $_nWave2
+wvReloadFile -win $_nWave2
+wvScrollDown -win $_nWave2 1
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+wvScrollDown -win $_nWave2 0
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "reg_bus_we" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "reg_bus_addr" -win $_nTrace1
+srcSelect -signal "reg_bus_wdat" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcHBSelect "tb.u_fpga_top.u_uart_tx" -win $_nTrace1
+srcSetScope -win $_nTrace1 "tb.u_fpga_top.u_uart_tx" -delim "."
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "tvld" -win $_nTrace1
+srcSelect -signal "tdata" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "txd" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "trdy" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoomAll -win $_nWave2
+srcDeselectAll -win $_nTrace1
+srcHBSelect "tb.u_fpga_top.u_starsea_core" -win $_nTrace1
+srcHBSelect "tb.u_fpga_top.u_starsea_core" -win $_nTrace1
+srcSetScope -win $_nTrace1 "tb.u_fpga_top.u_starsea_core" -delim "."
+srcShowCalling -win $_nTrace1
+srcSelect -win $_nTrace1 -range {55 55 3 4 1 1}
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "reg_bus_rdat" -win $_nTrace1
+srcAction -pos 64 4 8 -win $_nTrace1 -name "reg_bus_rdat" -ctrlKey off
+wvSetCursor -win $_nWave2 360422209.369578 -snap {("G1" 78)}
+wvDisplayGridCount -win $_nWave2 -off
+wvGetSignalClose -win $_nWave2
+wvReloadFile -win $_nWave2
+wvZoom -win $_nWave2 18108733.371891 65425101.214575
+wvZoom -win $_nWave2 21146394.928014 24786115.531297
+wvZoom -win $_nWave2 111570.382865 911508.976993
+wvZoom -win $_nWave2 249905.628466 692208.286642
+wvSetCursor -win $_nWave2 448161.591501 -snap {("G1" 75)}
+wvSelectSignal -win $_nWave2 {( "G1" 75 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 73 )} 
+wvSelectSignal -win $_nWave2 {( "G1" 75 )} 
+srcHBSelect "tb.u_fpga_top.u_starsea_core.u_dram" -win $_nTrace1
+srcSetScope -win $_nTrace1 "tb.u_fpga_top.u_starsea_core.u_dram" -delim "."
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_we" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_we_byte" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcShowCalling -win $_nTrace1
+srcSelect -win $_nTrace1 -range {193 193 3 4 1 1}
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "reg_bus_we" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_we" -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+debReload
+srcDeselectAll -win $_nTrace1
+srcSelect -word -line 197 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+wvScrollUp -win $_nWave2 1
+wvScrollUp -win $_nWave2 1
+srcHBSelect "tb.u_fpga_top.u_starsea_core" -win $_nTrace1
+srcSetScope -win $_nTrace1 "tb.u_fpga_top.u_starsea_core" -delim "."
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "reg_bus_we" -win $_nTrace1
+srcSelect -signal "reg_bus_addr" -win $_nTrace1
+srcSelect -signal "reg_bus_wdat" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoom -win $_nWave2 132000.099259 782791.286303
+wvZoom -win $_nWave2 306272.117536 528723.009117
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "reg_bus_addr" -win $_nTrace1
+srcAction -pos 22 9 10 -win $_nTrace1 -name "reg_bus_addr" -ctrlKey off
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_addr" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -word -line 197 -pos 1 -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_wdat" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+wvZoomOut -win $_nWave2
+wvZoomOut -win $_nWave2
+wvZoom -win $_nWave2 176005.101031 700932.595334
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "reg_bus_addr" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_addr\[31\]" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "dram_we" -win $_nTrace1
+srcAddSelectedToWave -win $_nTrace1
+debExit

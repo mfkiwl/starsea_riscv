@@ -129,7 +129,7 @@ ADS_HOME=/opt/KeySight/ADS2015
 15
 1599925289 ../../rtl/soc/fpga_top.v
 1599925289 ../../rtl/core/wb.v
-1600011154 ../../rtl/core/starsea_core.v
+1600015126 ../../rtl/core/starsea_core.v
 1599925289 ../../rtl/core/regs.v
 1599925289 ../../rtl/core/pc.v
 1599925289 ../../rtl/core/machine.v
@@ -148,4 +148,4 @@ ADS_HOME=/opt/KeySight/ADS2015
 1393562197 /opt/Synopsys/VCS2014/amd64/lib/liberrorinf.so
 1393562054 /opt/Synopsys/VCS2014/amd64/lib/libsnpsmalloc.so
 1453442056 /opt/Synopsys/Verdi2015/share/PLI/VCS/LINUX64/pli.a
-1600011167 simv.daidir
+1600015142 simv.daidir

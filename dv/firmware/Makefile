@@ -1,5 +1,7 @@
 all:
-	riscv32-unknown-elf-as crt0.S -o crt0.o
-	riscv32-unknown-elf-gcc main.c -o main.o
-	riscv32-unknown-elf-ld crt0.o main.o -T link.ld
+	riscv32-unknown-elf-gcc  init.S main.c -T link.ld -nostdlib -o test.elf
+	riscv32-unknown-elf-objdump  -D test.elf > test.elf.objdump
+	riscv32-unknown-elf-objcopy  test.elf -O ihex test.elf.objcopy
 
+clean:
+	rm *elf *objdump *objcopy

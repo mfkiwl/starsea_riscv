@@ -195,7 +195,7 @@ dram u_dram
 .clk                          (clk                          ),
 .rst_n                        (rst_n                        ),
 .dram_wdat                    (dram_wdat                    ),
-.dram_we                      (dram_we                      ),
+.dram_we                      (dram_we&(~dram_addr[31])     ),
 .dram_we_byte                 (dram_we_byte                 ),
 .dram_addr                    (dram_addr-'h4000_0000        ),
 .dram_dout                    (dram_dout_to_dbus            )
