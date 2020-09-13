@@ -3,8 +3,8 @@ A riscv core, support RV32I instructions , and pass RISCV compliace tests.
 
 Three pipeline:
    instruction fetch
-         instruction execuation / registers read
-                registers write / memory access
+   instruction execuation / registers read
+   registers write / memory access
 
 Tools:
    1. riscv gun toolchain
