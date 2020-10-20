@@ -2,7 +2,7 @@ Command: vcs -sverilog -full64 -f ../flist +lint=TFIPC-L -P /opt/Synopsys/Verdi2
 /opt/Synopsys/Verdi2015/share/PLI/VCS/LINUX64/pli.a -l run.log +v2k -debug_all +notimingcheck \
 -lca
                          Chronologic VCS (TM)
-         Version I-2014.03_Full64 -- Mon Sep 14 00:38:50 2020
+         Version I-2014.03_Full64 -- Wed Oct 21 00:43:38 2020
                Copyright (c) 1991-2014 by Synopsys Inc.
                          ALL RIGHTS RESERVED
 
@@ -16,64 +16,7 @@ Warning-[LCA_FEATURES_ENABLED] Usage warning
   information regarding list of LCA features please refer to Chapter "LCA 
   features" in the VCS/VCS-MX Release Notes
 
-Parsing design file '../../tb/tb.v'
-Parsing design file '../../rtl/core/alu.v'
-Parsing design file '../../rtl/core/ctrl.v'
-Parsing design file '../../rtl/core/dram.v'
-Parsing design file '../../rtl/core/id.v'
-Parsing design file '../../rtl/core/iram.v'
-Parsing design file '../../rtl/core/machine.v'
-Parsing design file '../../rtl/core/pc.v'
-Parsing design file '../../rtl/core/regs.v'
-Parsing design file '../../rtl/core/starsea_core.v'
-Parsing design file '../../rtl/core/wb.v'
-Parsing design file '../../rtl/soc/fpga_top.v'
-Top Level Modules:
-       tb
-TimeScale is 1 ns / 1 ps
+The design hasn't changed and need not be recompiled. 
+If you really want to, delete file simv.daidir/.vcs.timestamp and
+run VCS again.
 
-Lint-[TFIPC-L] Too few instance port connections
-../../rtl/core/starsea_core.v, 285
-"alu u_alu( .clk (clk),  .rst_n (rst_n),  .hazard_rs1 (hazard_rs1),  .hazard_rs2 (hazard_rs2),  .hazard_rs_rd (hazard_rs_rd),  .r_type_funct3_ex (r_type_funct3_ex),  .r_type_funct7_ex (r_type_funct7_ex),  .r_type_ex ((r_type_ex & (~pc_jump_en))),  .rd (rd),  .alu_rd_val (add_res_val),  .rd_dat (rd_dat),  .rs2_dat (rs2_dat),  .rs1_dat_ex (rs1_dat_ex),  .rs2_dat_ex (rs2_dat_ex),  .pc (pc),  .lui_ex ((lui_ex & (~pc_jump_en))),  .auipc_ex ((auipc_ex & (~pc_jump_en))),  .u_type_imm (u_type_imm),  .i_type_ari_funct3_ex (i_type_ari_funct3_ex),  .i_type_ari_funct7_ex (i_type_ari_funct7_ex),  .i_type_ari_ex ((i_type_ari_ex & (~pc_jump_en))),  .rs1_dat (rs1_dat),  .imm (si_type_imm),  .add_res_val (add_res_val),  .add_res (add_res),  .store_ex ((store_ex & (~pc_ju ... "
-  The above instance has fewer port connections than the module definition,
-  input port 'add_ex' is not connected,
-  input port 'sub_ex' is not connected.
-
-
-Lint-[TFIPC-L] Too few instance port connections
-../../rtl/core/starsea_core.v, 336
-"wb u_wb( .clk (clk),  .sw_en (sw_en),  .add_en (add_en),  .wr_dbus_en (wr_dubs_en),  .wr_rd_en (wr_rd_en));"
-  The above instance has fewer port connections than the module definition,
-  input port 'rst_n' is not connected,
-  input port 'addi_ex' is not connected,
-  input port 'andi_ex' is not connected.
-
-
-Lint-[TFIPC-L] Too few instance port connections
-../../tb/tb.v, 20
-"fpga_top u_fpga_top();"
-  The above instance has fewer port connections than the module definition,
-  all ports are not connected.
-
-Starting vcs inline pass...
-3 modules and 0 UDP read.
-	However, due to incremental compilation, only 1 module needs to be compiled.
-recompiling module tb because:
-	This module or some inlined child module(s) has/have been modified.
-rm -f _csrc*.so amd64_scvhdl_*.so pre_vcsobj_*.so share_vcsobj_*.so
-ld -shared -o .//../simv.daidir//_csrc1.so --whole-archive _vcsobj_1_1.a  --no-whole-archive \
-
-ld -shared -o .//../simv.daidir//_csrc0.so 5NrI_d.o 5NrIB_d.o SIM_l.o  
-ld -shared -o .//../simv.daidir//pre_vcsobj_0_1.so --whole-archive pre_vcsobj_0_1.a \
---no-whole-archive
-if [ -x ../simv ]; then chmod -x ../simv; fi
-g++  -o ../simv    -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir \
-_csrc1.so _csrc0.so   pre_vcsobj_0_1.so  rmapats_mop.o rmapats.o rmar.o          \
-/opt/Synopsys/VCS2014/amd64/lib/libzerosoft_rt_stubs.so /opt/Synopsys/VCS2014/amd64/lib/libvirsim.so \
-/opt/Synopsys/VCS2014/amd64/lib/liberrorinf.so /opt/Synopsys/VCS2014/amd64/lib/libsnpsmalloc.so \
-/opt/Synopsys/Verdi2015/share/PLI/VCS/LINUX64/pli.a    /opt/Synopsys/VCS2014/amd64/lib/libvcsnew.so \
-/opt/Synopsys/VCS2014/amd64/lib/libuclinative.so   -Wl,-whole-archive /opt/Synopsys/VCS2014/amd64/lib/libvcsucli.so \
--Wl,-no-whole-archive        _vcs_pli_stub_.o   /opt/Synopsys/VCS2014/amd64/lib/vcs_save_restore_new.o \
--ldl -lm -lm  -lc -lpthread -ldl 
-../simv up to date
-CPU time: 2.020 seconds to compile + 1.661 seconds to elab + .193 seconds to link

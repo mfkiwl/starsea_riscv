@@ -19,6 +19,14 @@ How to simulate riscv compilience tests:
    5. gvim log
    6. search log file, all simulation is ok, no fail
  
+How to simulate firmware:
+   1. cd firmware
+   2. change code
+   3. make
+   4. cd ../sim
+   5. ../run
+   
+
 
 Future plan:
    1. current fpga top only has a uart tx, prepare add more preipheral
@@ -28,3 +36,9 @@ Future plan:
    5. run coremark
    6. update fpga syn scripts
 
+
+updates:
+   2020.10.20
+   add define to run firmware
+   updates makefile
+   if current jump take, and last instrution is jalr,  flush last jalr

@@ -23,7 +23,8 @@ do
     +v2k \
     -debug_all \
     +notimingcheck \
-    -lca 
+    -lca \
+    +define+COMPLIANCE_TB
    PID=$!; wait ${PID}
    sleep 1
   ./simv -l sim.log

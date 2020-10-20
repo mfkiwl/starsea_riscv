@@ -9,16 +9,16 @@ InherViewShow = 0
 FSDBMsgShow = 0
 AnnotationShow = 0
 [hb]
-postSimFile = /home/IC/project/github/starsea_riscv/dv/sim/test.fsdb
-syncTime = 450000
-viewport = 0 25 1920 1004 629 408 340 1918
+postSimFile = /home/IC/project/starsea_riscv/dv/sim/test.fsdb
+syncTime = 850000
+viewport = 0 25 1920 1004 629 408 164 1918
 activeNode = "tb.u_fpga_top.u_starsea_core"
 activeScope = "tb.u_fpga_top.u_starsea_core"
 activeFile = "../../rtl/core/starsea_core.v"
 interactiveMode = False
 viewType = Source
 simulatorMode = False
-sourceBeginLine = 191
+sourceBeginLine = 14
 baMode = False
 srcLineNum = True
 syncSignal = False
@@ -32,24 +32,24 @@ traceIncTopPort = False
 leadingZero = False
 signalPane = False
 Scope1 = "tb.u_fpga_top.u_starsea_core"
-multipleSelection = 1 203 10 0 0
+multipleSelection = 1 23 9 0 0
 sdfCheckUndef = FALSE
 [hb.sourceTab.1]
 scope = tb.u_fpga_top.u_starsea_core
-File = /home/IC/project/github/starsea_riscv/rtl/core/starsea_core.v
-Line = 192
+File = /home/IC/project/starsea_riscv/rtl/core/starsea_core.v
+Line = 15
 [imp.design1]
 dbEnum =  oh
-invokeDir = /home/IC/project/github/starsea_riscv/dv/sim
+invokeDir = /home/IC/project/starsea_riscv/dv/sim
 design = DebussyLib
 hostCommand = hostCommand -f ../flist -sv
 [nMemoryManager]
-FsdbFile = /home/IC/project/github/starsea_riscv/dv/sim/test.fsdb
+FsdbFile = /home/IC/project/starsea_riscv/dv/sim/test.fsdb
 UserActionNum = 0
 nMemWindowNum = 0
 [wave.0]
 viewPort = 0 28 1920 406 100 65
-SessionFile = /home/IC/project/github/starsea_riscv/dv/sim/verdiLog/novas_autosave.ses.wave.0
+SessionFile = /home/IC/project/starsea_riscv/dv/sim/verdiLog/novas_autosave.ses.wave.0
 displayGrid = FALSE
 hierarchicalName = FALSE
 snap = TRUE

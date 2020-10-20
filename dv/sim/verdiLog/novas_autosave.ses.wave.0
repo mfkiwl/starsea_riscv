@@ -6,7 +6,7 @@ viewPort 0 28 1920 406 100 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
-openDirFile -d / "" "/home/IC/project/github/starsea_riscv/dv/sim/test.fsdb"
+openDirFile -d / "" "/home/IC/project/starsea_riscv/dv/sim/test.fsdb"
 
 ; file time scale:
 ; fileTimeScale ### s|ms|us|ns|ps
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 176005.101031 700932.595334
-cursor 450000.000000
-marker 250000.000000
+zoom 197978.031252 1127975.673857
+cursor 850000.000000
+marker 870000.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 83
+top 0
 ; marker line index
-markerPos 96
+markerPos 5
 
 ; event list
 ; addEvent event_name event_expression
@@ -46,103 +46,12 @@ curSTATUS ByChange
 
 
 addGroup "G1"
-activeDirFile "" "/home/IC/project/github/starsea_riscv/dv/sim/test.fsdb"
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/dram_we_byte[3:0]
-addSignal -h 15 -holdScope dram_we
-addSignal -h 15 -UNSIGNED -HEX -holdScope dram_wdat[31:0]
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/u_ctrl/s_type_store_funct3_wb[2:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope dram_wdat[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope store_wdat[7:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_alu/store_ex
-addSignal -h 15 -UNSIGNED -HEX -holdScope store_wdat[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope rd_dat[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope rs2_dat_ex[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope rd_dat[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_ctrl/dram_dout_wb
-addSignal -h 15 -UNSIGNED -HEX -holdScope alu_rd_dat[31:0]
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/u_alu/rd_dat[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope rs2_dat_ex[31:0]
-addSignal -h 15 -holdScope store_ex
-addSignal -h 15 -holdScope hazard_rs2
-addSignal -h 15 -UNSIGNED -HEX -holdScope rd_dat[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_ctrl/dram_dout_wb
-addSignal -h 15 -UNSIGNED -HEX -holdScope alu_rd_dat[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_alu/r_type_ex
-addSignal -h 15 -holdScope r_type_ex
-addSignal -h 15 -holdScope r_type_ex
-addSignal -h 15 -holdScope r_type_ex
-addSignal -h 15 -holdScope i_type_ari_ex
-addSignal -h 15 -UNSIGNED -HEX -holdScope i_type_ari_funct7_ex[6:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope i_type_ari_funct3_ex[2:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope a[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope add_res[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope a[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope b[31:0]
-addSignal -h 15 -holdScope i_type_ari_ex
-addSignal -h 15 -UNSIGNED -HEX -holdScope rd_dat[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_ctrl/dram_dout_wb
-addSignal -h 15 -UNSIGNED -HEX -holdScope alu_rd_dat[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_alu/r_type_ex
-addSignal -h 15 -holdScope r_type_ex
-addSignal -h 15 -holdScope r_type_ex
-addSignal -h 15 -holdScope r_type_ex
-addSignal -h 15 -holdScope i_type_ari_ex
-addSignal -h 15 -holdScope lui_ex
-addSignal -h 15 -holdScope auipc_ex
-addSignal -h 15 -holdScope jalr_ex
-addSignal -h 15 -holdScope jal_ex
-addSignal -h 15 -UNSIGNED -HEX -holdScope add_res[31:0]
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/u_ctrl/alu_rd_dat[31:0]
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/u_alu/add_res[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/csrr_rd_en
-addSignal -h 15 -UNSIGNED -HEX -holdScope csrr_rd_dat[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_machine/system_ex
-addSignal -h 15 -UNSIGNED -HEX -holdScope system_funct3_ex[2:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope system_funct12_ex[11:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope mtval[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope pc[31:0]
-addSignal -h 15 -holdScope misalign_exception
-addSignal -h 15 -holdScope load_misalign_exception
-addSignal -h 15 -holdScope store_misalign_exception
-addSignal -h 15 -holdScope jalr_misalign_exception
-addSignal -h 15 -holdScope j_misalign_exception_ex
-addSignal -h 15 -UNSIGNED -HEX -holdScope mtval[31:0]
-addSignal -h 15 -holdScope rst_n
-addSignal -h 15 -holdScope clk
-addSignal -h 15 -UNSIGNED -HEX -holdScope mtval[31:0]
-addSignal -h 15 -holdScope misalign_exception
-addSignal -h 15 -holdScope jalr_misalign_exception
-addSignal -h 15 -holdScope j_misalign_exception_ex
-addSignal -h 15 -holdScope load_misalign_exception
-addSignal -h 15 -UNSIGNED -HEX -holdScope load_misalign_addr[31:0]
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/load_misalign_addr[31:0]
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/u_pc/pc[31:0]
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/u_id/inst[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/dram_we
-addSignal -h 15 -UNSIGNED -HEX -holdScope dram_addr[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope dram_wdat[31:0]
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/u_dram/dram_addr[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/reg_bus_we
+activeDirFile "" "/home/IC/project/starsea_riscv/dv/sim/test.fsdb"
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/reg_bus_rd
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_rdat[31:0]
 addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_addr[31:0]
+addSignal -h 15 -holdScope reg_bus_we
 addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_wdat[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_uart_tx/tvld
-addSignal -h 15 -UNSIGNED -HEX -holdScope tdata[7:0]
-addSignal -h 15 -holdScope txd
-addSignal -h 15 -holdScope trdy
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_dram/dram_we
-addSignal -h 15 -UNSIGNED -HEX -holdScope dram_we_byte[3:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/reg_bus_we
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_dram/dram_we
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/reg_bus_we
-addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_addr[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_wdat[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope dram_addr[31:0]
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_dram/dram_we
-addSignal -h 15 -UNSIGNED -HEX -holdScope dram_addr[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope dram_wdat[31:0]
-addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/reg_bus_addr[31:0]
-addSignal -h 15 -holdScope dram_addr[31]
-addSignal -h 15 -holdScope dram_we
 addGroup "G2"
 
 ; getSignalForm Scope Hierarchy Status

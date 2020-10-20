@@ -59,7 +59,9 @@ wire[31:0] t3    = tb.u_fpga_top.u_starsea_core.u_regs.regs[28];
 wire[31:0] t4    = tb.u_fpga_top.u_starsea_core.u_regs.regs[29];
 wire[31:0] t5    = tb.u_fpga_top.u_starsea_core.u_regs.regs[30];
 wire[31:0] t6    = tb.u_fpga_top.u_starsea_core.u_regs.regs[31];
+
 ////////////////////complience testbench////////////////////////////////
+`ifdef COMPLIANCE_TB
 integer f;
 integer i;
 integer signature_begin;
@@ -87,6 +89,8 @@ if(tb.u_fpga_top.u_starsea_core.dram_we &( tb.u_fpga_top.u_starsea_core.dram_add
       break;
   end
 end
+`endif
+////////////////////complience testbench////////////////////////////////
 
 endmodule;
 

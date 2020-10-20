@@ -1,0 +1,2 @@
+Simulation Mode: VCS
+stop -line 35 -file /home/IC/project/starsea_riscv/rtl/core/starsea_core.v 

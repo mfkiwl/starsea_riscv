@@ -1,7 +1,7 @@
 Command: ./simv -l sim.log
 Chronologic VCS simulator copyright 1991-2014
 Contains Synopsys proprietary information.
-Compiler version I-2014.03_Full64; Runtime version I-2014.03_Full64;  Sep 14 00:39 2020
+Compiler version I-2014.03_Full64; Runtime version I-2014.03_Full64;  Oct 21 00:43 2020
 *Verdi3* Loading libsscore_vcs201403.so
 *Verdi3* : Enable Parallel Dumping.
 FSDB Dumper for VCS, Release Verdi3_K-2015.09-SP1-1, Linux x86_64/64bit, 01/21/2016
@@ -17,5 +17,5 @@ $finish called from file "../../tb/tb.v", line 24.
 $finish at simulation time           1000000000
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 1000000000 ps
-CPU Time:      1.560 seconds;       Data structure size:   0.1Mb
-Mon Sep 14 00:39:07 2020
+CPU Time:      1.580 seconds;       Data structure size:   0.1Mb
+Wed Oct 21 00:43:49 2020

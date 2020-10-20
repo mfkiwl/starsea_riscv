@@ -328,7 +328,7 @@ alu u_alu
 .b_type_funct3_ex             (b_type_funct3_ex             ),
 .jal_ex                       (jal_ex                       ),
 .jal_imm_ex                   (jal_imm_ex                   ),
-.jalr_ex                      (jalr_ex                      ),
+.jalr_ex                      (jalr_ex& ~pc_jump_en         ),
 .jalr_bran_take               (jalr_bran_take               ),
 .target_addr                  (target_addr                  )
 );
