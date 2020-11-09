@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi3_K-2015.09-SP1-1
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 28 1920 406 100 65
+viewPort 0 28 1920 406 238 234
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -15,17 +15,19 @@ openDirFile -d / "" "/home/IC/project/starsea_riscv/dv/sim/test.fsdb"
 signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
+windowTimeUnit 1ms
+
 ; waveform viewport range
-zoom 197978.031252 1127975.673857
-cursor 850000.000000
-marker 870000.000000
+zoom 0.000000 31.354733 1m
+cursor 18.662670
+marker 5.422430
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 5
+markerPos 12
 
 ; event list
 ; addEvent event_name event_expression
@@ -45,13 +47,33 @@ COMPLEX_EVENT_END
 curSTATUS ByChange
 
 
+aliasmapname uart_rx.cstate
+nalias bit0		5'b00010		NULL
+nalias bit6		5'b01000		NULL
+nalias bit1		5'b00011		NULL
+nalias bit4		5'b00110		NULL
+nalias bit7		5'b01001		NULL
+nalias bit5		5'b00111		NULL
+nalias idle		5'b00000		NULL
+nalias start		5'b00001		NULL
+nalias bit2		5'b00100		NULL
+nalias bit3		5'b00101		NULL
+nalias stop		5'b01010		NULL
+
 addGroup "G1"
+addGroup "G3"
 activeDirFile "" "/home/IC/project/starsea_riscv/dv/sim/test.fsdb"
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/reg_bus_rd
-addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_rdat[31:0]
+addSignal -h 15 /tb/u_fpga_top/u_uart_rx/rvld
+addSignal -h 15 -UNSIGNED -ASC -holdScope rdata[7:0]
+addSignal -h 15 -holdScope rxd
+addSignal -h 15 /tb/u_uart_tx/tvld
+addSignal -h 15 -UNSIGNED -ASC -holdScope tdata[7:0]
+addSignal -h 15 -holdScope trdy
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/reg_bus_we
 addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_addr[31:0]
-addSignal -h 15 -holdScope reg_bus_we
 addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_wdat[31:0]
+addSignal -h 15 -holdScope reg_bus_we
+addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_addr[31:0]
 addGroup "G2"
 
 ; getSignalForm Scope Hierarchy Status

@@ -17,10 +17,122 @@
 module tb;
 wire [31:0] t =0;
 wire [31:0] a = $signed(t);
+reg  [7:0]tb_uart_tdata;
+reg       tb_uart_tvld ;
+wire      tb_uart_txd  ;
+wire      tb_uart_trdy ;
+wire      tb_uart_rxd  ;
+wire      tb_clk = tb.u_fpga_top.u_starsea_core.clk ;
 fpga_top u_fpga_top(
+  .uart_rxd     (tb_uart_txd),
+  .uart_txd     (tb_uart_rxd)
 );
 initial begin
-  #1ms;
+  tb_uart_tvld = 0;
+  tb_uart_tdata = 0;
+  #5ms;
+  @(posedge tb_clk)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "h";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "e";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "l";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "p";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "\n";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+  #10ms; 
+
+  @(posedge tb_clk)
+  if(tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "l";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "e";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "d";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = " ";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "t";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "e";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "s";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "t";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+  @(posedge tb_uart_trdy)begin
+  tb_uart_tvld = 1;
+  tb_uart_tdata = "\n";
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+
+
+  #15ms; 
   $finish;
 end
 initial begin
@@ -91,6 +203,31 @@ if(tb.u_fpga_top.u_starsea_core.dram_we &( tb.u_fpga_top.u_starsea_core.dram_add
 end
 `endif
 ////////////////////complience testbench////////////////////////////////
+uart_tx #(.clk_freq ( 50_000_000 ),.baud_ratio ( 115200 )) u_uart_tx (
+
+.clk          ( tb.u_fpga_top.u_starsea_core.clk                ), // input
+.rst_n        ( tb.u_fpga_top.u_starsea_core.rst_n              ), // input
+.tdata        ( tb_uart_tdata  [7:0] ), // input
+.tvld         ( tb_uart_tvld         ), // input,
+
+.txd          ( tb_uart_txd          ), // output
+.trdy         ( tb_uart_trdy              )  // output
+);
+
+wire rvld;
+wire [7:0] rdata;
+uart_rx #(.clk_freq ( 50_000_000 ),.baud_ratio ( 115200 )) u_uart_rx (
+.clk          ( tb.u_fpga_top.u_starsea_core.clk                ), // input
+.rst_n        ( tb.u_fpga_top.u_starsea_core.rst_n              ), // input
+
+.rxd          ( tb_uart_rxd          ),  // input
+.rvld         ( rvld              ),
+.rdata        ( rdata             )
+
+);
+
+always@(posedge rvld)
+    $write("%c",rdata);
 
 endmodule;
 

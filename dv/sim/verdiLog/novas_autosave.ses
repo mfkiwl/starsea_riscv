@@ -10,15 +10,15 @@ FSDBMsgShow = 0
 AnnotationShow = 0
 [hb]
 postSimFile = /home/IC/project/starsea_riscv/dv/sim/test.fsdb
-syncTime = 850000
-viewport = 0 25 1920 1004 629 408 164 1918
+syncTime = 18.66267
+viewport = 0 25 1920 1004 632 408 459 1918
 activeNode = "tb.u_fpga_top.u_starsea_core"
 activeScope = "tb.u_fpga_top.u_starsea_core"
 activeFile = "../../rtl/core/starsea_core.v"
 interactiveMode = False
 viewType = Source
 simulatorMode = False
-sourceBeginLine = 14
+sourceBeginLine = 196
 baMode = False
 srcLineNum = True
 syncSignal = False
@@ -32,12 +32,17 @@ traceIncTopPort = False
 leadingZero = False
 signalPane = False
 Scope1 = "tb.u_fpga_top.u_starsea_core"
-multipleSelection = 1 23 9 0 0
+Scope2 = "tb.u_fpga_top"
+Scope3 = "tb.u_fpga_top.u_uart_rx"
+Scope4 = "tb.u_fpga_top.u_uart_tx"
+Scope5 = "tb.u_uart_tx"
+Scope6 = "tb.u_fpga_top.u_starsea_core.u_iram"
+Scope7 = "tb.u_fpga_top.u_starsea_core.u_machine"
 sdfCheckUndef = FALSE
 [hb.sourceTab.1]
 scope = tb.u_fpga_top.u_starsea_core
 File = /home/IC/project/starsea_riscv/rtl/core/starsea_core.v
-Line = 15
+Line = 197
 [imp.design1]
 dbEnum =  oh
 invokeDir = /home/IC/project/starsea_riscv/dv/sim
@@ -48,7 +53,7 @@ FsdbFile = /home/IC/project/starsea_riscv/dv/sim/test.fsdb
 UserActionNum = 0
 nMemWindowNum = 0
 [wave.0]
-viewPort = 0 28 1920 406 100 65
+viewPort = 0 28 1920 406 238 234
 SessionFile = /home/IC/project/starsea_riscv/dv/sim/verdiLog/novas_autosave.ses.wave.0
 displayGrid = FALSE
 hierarchicalName = FALSE

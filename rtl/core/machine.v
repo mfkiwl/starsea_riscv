@@ -38,7 +38,9 @@ output  reg         misalign_bran_take           ,
 input               jalr_misalign_exception      ,
 output  reg         jalr_misalign_bran_take      ,
 input               j_misalign_exception         ,
-output  reg         j_misalign_bran_take
+output  reg         j_misalign_bran_take         ,
+input               intr                         ,
+output  reg         intr_bran_take
 );
 
 reg  [31:0] mtvec                        ;                             
@@ -51,6 +53,14 @@ reg  [31:0] mret_addr                    ;
 wire [6:0]  system_funct7_ex = system_funct12_ex[11:5];
 
 assign trap_addr = mret_bran_take ? mret_addr : mtvec;
+
+reg intr_d;
+always@(posedge clk or negedge rst_n)
+    if(~rst_n) 
+        intr_d <= 0;
+    else
+        intr_d <= intr;
+
 
 always@(posedge clk or negedge rst_n)
     if(~rst_n) 
@@ -141,6 +151,8 @@ always@(posedge clk or negedge rst_n)
         mepc <= hazard_rs1 ? rd_dat : rs1_dat_ex;
     else if (store_misalign_exception | load_misalign_exception | misalign_exception)
         mepc <= pc_ex;
+    else if(intr & ~intr_d)
+        mepc <= pc_ex;
 
 reg j_misalign_exception_ex;
 always@(posedge clk or negedge rst_n)
@@ -183,5 +195,11 @@ always@(posedge clk or negedge rst_n)
         misalign_bran_take <= 1;
     else
         misalign_bran_take <= 0;
-
+always@(posedge clk or negedge rst_n)
+    if(~rst_n) 
+        intr_bran_take <= 0;
+    else if(intr & ~intr_d)
+        intr_bran_take <= 1;
+    else
+        intr_bran_take <= 0;
 endmodule

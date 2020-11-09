@@ -37,7 +37,8 @@ module pc
     output            j_misalign_exception      ,
     input             j_misalign_bran_take      ,
     output            jalr_misalign_exception   ,
-    input             jalr_misalign_bran_take
+    input             jalr_misalign_bran_take   ,
+    input             intr_bran_take
 
 );
 reg [12:0] pc_off_d;
@@ -73,7 +74,7 @@ reg [31:0] pc_save_d;
 always@(posedge clk )
      pc_save_d <= pc_save; //decode need a cycle, alu need a cycle
 
-wire [3:0] pc_sel = {(misalign_bran_take|jalr_misalign_bran_take|j_misalign_bran_take | mret_bran_take|ebreak_bran_take),ecall_bran_take,jalr_bran_take,pc_jump_en};
+wire [3:0] pc_sel = {(intr_bran_take|misalign_bran_take|jalr_misalign_bran_take|j_misalign_bran_take | mret_bran_take|ebreak_bran_take),ecall_bran_take,jalr_bran_take,pc_jump_en};
 always@(*) begin
     pc = pc_inc;
     case(pc_sel)

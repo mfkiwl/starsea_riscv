@@ -18,7 +18,8 @@ include filelist.pli
 include filelist.hsopt
 
 
-VCS_OBJS =5NrI_d.o 5NrIB_d.o SIM_l.o 
+VCS_OBJS =5NrI_d.o 5NrIB_d.o \
+	SIM_l.o 
 VCS_ARC0=_csrc0.so
 VCS_OBJS0=$(VCS_OBJS) 
 
@@ -48,8 +49,14 @@ $(VCS_INCR1_ARC1) : $(VCS_INCR1_OBJ1)
 	$(PIC_LD) -shared -o .//../simv.daidir//$(VCS_INCR1_ARC1) $(PIC_LD_PRE_OPTS) $(VCS_INCR1_OBJ1) $(PIC_LD_POST_OPTS)
 	@ln -sf .//../simv.daidir//$(VCS_INCR1_ARC1) $(VCS_INCR1_ARC1)
 
+VCS_INCR1_OBJ2=pre_vcsobj_1_2.a
+VCS_INCR1_ARC2=pre_vcsobj_1_2.so
+$(VCS_INCR1_ARC2) : $(VCS_INCR1_OBJ2)
+	$(PIC_LD) -shared -o .//../simv.daidir//$(VCS_INCR1_ARC2) $(PIC_LD_PRE_OPTS) $(VCS_INCR1_OBJ2) $(PIC_LD_POST_OPTS)
+	@ln -sf .//../simv.daidir//$(VCS_INCR1_ARC2) $(VCS_INCR1_ARC2)
 
-VCS_INCR_OBJS= $(VCS_INCR1_ARC1)
+
+VCS_INCR_OBJS= $(VCS_INCR1_ARC1) $(VCS_INCR1_ARC2)
 
 
 SHARED_OBJ_SO=

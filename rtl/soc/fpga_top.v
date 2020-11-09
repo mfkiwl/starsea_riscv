@@ -2,6 +2,7 @@ module fpga_top(
   input   clk_in1_p,
   input   clk_in1_n,
   input   rst      ,
+  input   uart_rxd ,
   output  uart_txd 
 );
 `ifndef SIM
@@ -40,24 +41,50 @@ initial begin
 end
 `endif
 
+wire trdy;
+wire [31:0] timer_cnt;
+
+wire reg_uart_rx_we;
+wire [31:0] reg_uart_rx_addr;
+wire [31:0] reg_uart_rx_wdat;
+wire [31:0] reg_uart_rx_rdat;
+
 (*mark_debug="true"*)wire  reg_bus_we;
 (*mark_debug="true"*)wire  [31:0] reg_bus_addr;
 (*mark_debug="true"*)wire  [31:0] reg_bus_wdat;
 (*mark_debug="true"*)wire  reg_bus_rd;
-(*mark_debug="true"*)wire  [31:0] reg_bus_rdat = 3;
+(*mark_debug="true"*)reg   [31:0] reg_bus_rdat;// = reg_bus_addr == 32'h80000100 ? trdy : 
+                                               //  reg_bus_addr == 32'h80000120 ? reg_uart_rx_rdat :
+                                               //  reg_bus_addr == 32'h80000200 ? timer_cnt :'h3;
+always@(*)begin
+  reg_bus_rdat = 3;//test
+  casez(reg_bus_addr)
+  32'h80000100 : reg_bus_rdat = {31'b0,trdy};
+  32'h8000012? : reg_bus_rdat = reg_uart_rx_rdat;
+  32'h80000200 : reg_bus_rdat = timer_cnt;
+  endcase
+end
+
+assign reg_uart_rx_we   = reg_bus_addr[31:4] == (32'h80000120>>4) ? reg_bus_we :0;
+assign reg_uart_rx_wdat = reg_bus_addr[31:4] == (32'h80000120>>4) ? reg_bus_wdat :0;
+assign reg_uart_rx_addr = reg_bus_addr[31:4] == (32'h80000120>>4) ? reg_bus_addr :0;
 
 (*mark_debug="true"*)wire iram_we    ;
 (*mark_debug="true"*)wire [31:0] iram_waddr; 
 (*mark_debug="true"*)wire [31:0] iram_wdata;
 
-wire [7:0] uart_tdata = 8'ha0;
-wire       uart_tvld  = reg_bus_we;
+wire       uart_tvld  = reg_bus_addr == 32'h80000104 ? reg_bus_we : 0;
+wire [7:0] uart_tdata = uart_tvld ? reg_bus_wdat : 0;
+wire       uart_rvld;
+wire [7:0] uart_rdata;
+wire       intr = uart_rvld;
 starsea_core u_starsea_core(
 .clk(clk),
 .rst_n(rst_n),
 .iram_we      (iram_we     ),
 .iram_waddr   (iram_waddr  ),
 .iram_wdata   (iram_wdata  ),
+.intr         (intr        ),
 .reg_bus_we   (reg_bus_we  ),
 .reg_bus_addr (reg_bus_addr),
 .reg_bus_wdat (reg_bus_wdat),
@@ -75,6 +102,31 @@ uart_tx #(.clk_freq ( 50_000_000 ),.baud_ratio ( 115200 )) u_uart_tx (
 .txd          ( uart_txd          ), // output
 .trdy         ( trdy              )  // output
 );
+
+uart_rx #(.clk_freq ( 50_000_000 ),.baud_ratio ( 115200 )) u_uart_rx (
+.clk          ( clk               ), // input
+.rst_n        ( rst_n             ), // input
+
+.rxd          ( uart_rxd          ), // input
+.rvld         ( uart_rvld         ), // output
+.rdata        ( uart_rdata        ), // output
+
+.reg_bus_we   ( reg_uart_rx_we  ),
+.reg_bus_addr ( reg_uart_rx_addr),
+.reg_bus_wdat ( reg_uart_rx_wdat),
+.reg_bus_rdat ( reg_uart_rx_rdat)     
+
+);
+
+
+
+timer u_timer (
+
+.clk          ( clk               ), // input
+.rst_n        ( rst_n             ), // input
+.timer_cnt    ( timer_cnt         )
+);
+
 endmodule
 
 module uart_tx #(
@@ -122,5 +174,135 @@ always@(posedge clk or negedge rst_n)
 assign tbit_done = clk_div_cnt==clk_div_num;
 assign trdy = tbyte_cnt == 'd0;
 assign tbyte_done = tbyte_cnt == 'd10 && tbit_done;
+endmodule
+
+module uart_rx #(
+    parameter clk_freq  = 27_000_000,
+    parameter baud_ratio= 115200 
+) (
+	input             clk,
+	input             rst_n,
+	output reg  [7:0] rdata,
+	output reg        rvld,
+	input             rxd,
+
+  input         reg_bus_we         ,
+  input  [31:0] reg_bus_addr       ,
+  input  [31:0] reg_bus_wdat       ,
+  output reg[31:0] reg_bus_rdat             
+);
+localparam clk_div_num = clk_freq / baud_ratio;
+
+reg [15:0] rxd_ff;
+always@(posedge clk or negedge rst_n)
+  if(~rst_n)      rxd_ff <= 16'hffff;
+  else            rxd_ff <= {rxd_ff[14:0],rxd};
+
+reg rxd_final;
+always@(posedge clk or negedge rst_n)
+  if(~rst_n)         rxd_final <= 1'b1;
+  else if(&rxd_ff)   rxd_final <= 1'b1;
+  else if(~(|rxd_ff))rxd_final <= 1'b0;
+
+
+reg [15:0] bit_time;
+wire       bit_done;
+reg [4:0] cstate;
+reg [4:0] nstate;
+localparam idle = 5'b0;
+localparam start = 5'b1;
+localparam bit0 = 5'h2;
+localparam bit1 = 5'h3;
+localparam bit2 = 5'h4;
+localparam bit3 = 5'h5;
+localparam bit4 = 5'h6;
+localparam bit5 = 5'h7;
+localparam bit6 = 5'h8;
+localparam bit7 = 5'h9;
+localparam stop = 5'ha;
+always@(*)begin
+  nstate = cstate;
+  case(cstate)
+  idle:  if(rxd_final==0)    nstate = start;
+  start: if(bit_done) nstate=bit0;
+  bit0:  if(bit_done) nstate=bit1;
+  bit1:  if(bit_done) nstate=bit2;
+  bit2:  if(bit_done) nstate=bit3;
+  bit3:  if(bit_done) nstate=bit4;
+  bit4:  if(bit_done) nstate=bit5;
+  bit5:  if(bit_done) nstate=bit6;
+  bit6:  if(bit_done) nstate=bit7;
+  bit7:  if(bit_done) nstate=stop;
+  stop:  if(bit_done) nstate=idle;
+  endcase
+end
+
+always@(posedge clk or negedge rst_n)
+  if(~rst_n)      cstate <= 5'b0;
+  else            cstate <= nstate;
+
+always@(posedge clk or negedge rst_n)
+  if(~rst_n)                        bit_time <= 16'b0;
+  else if(bit_time == clk_div_num)  bit_time <= 16'b0;
+  else if(cstate != idle)           bit_time <= bit_time + 1'b1;
+
+     
+assign bit_done = bit_time==clk_div_num;
+
+always@(posedge clk or negedge rst_n)
+  if(~rst_n)      rdata <= 8'b0;
+  else if(cstate != idle && cstate != start && cstate != stop)
+    if(bit_time == clk_div_num/2)
+        rdata <= {rxd_final,rdata[7:1]};
+
+always@(posedge clk or negedge rst_n)
+  if(~rst_n)     
+    rvld <= 1'b0;
+  else if(cstate == bit7 && bit_time == clk_div_num/2)
+    rvld <=1'b1;
+  else
+    rvld <= 1'b0;
+
+wire intr_flag_clr = reg_bus_we & (reg_bus_addr == 32'h80000124);
+reg intr_flag;
+always@(posedge clk or negedge rst_n)
+  if(~rst_n)     
+    intr_flag <= 1'b0;
+  else if(intr_flag_clr)
+    intr_flag <= 1'b0;
+  else if(cstate == bit7 && bit_time == clk_div_num/2)
+    intr_flag <= 1'b1;
+
+reg [7:0] rdata_buf ;
+always@(posedge clk or negedge rst_n)
+  if(~rst_n)     
+    rdata_buf <= 8'b0;
+  else if(rvld)
+    rdata_buf <= rdata;
+
+always@(*)begin
+  reg_bus_rdat = 0;
+  case(reg_bus_addr)
+  32'h80000120 : reg_bus_rdat = {31'b0,intr_flag};
+  32'h80000124 : reg_bus_rdat = {32'b0,intr_flag_clr};
+  32'h80000128 : reg_bus_rdat = {24'b0,rdata_buf};
+  endcase
+end
+
+endmodule
+
+
+
+module timer
+(
+	input		    clk,
+	input		    rst_n,
+	output reg[31:0]	timer_cnt
+);
+
+always@(posedge clk or negedge rst_n)
+	if(~rst_n)					 timer_cnt <= 0;
+	else                 timer_cnt <= timer_cnt +1; 
+      
 endmodule
 

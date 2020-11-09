@@ -5,11 +5,14 @@ module dram
     input     [31:0]  dram_wdat,
     input             dram_we,
     input     [3:0]   dram_we_byte,
+    input             dram_rd,
     input     [31:0]  dram_addr,
     output reg[31:0]  dram_dout
 );
 reg  [31:0] dram [0:1023];
 initial begin
+ foreach(dram[i]) dram[i] = 0;
+ #0.1us;
  $readmemh ("dram_data", dram);
 end
 always@(posedge clk)begin
@@ -24,6 +27,13 @@ always@(posedge clk)begin
             dram[dram_addr>>2][31:24] <= dram_wdat[31:24];
     end
 end
-assign dram_dout = dram[dram_addr>>2];
+reg [31:0] dram_dout_tmp;
+always@(*)
+    if(dram_rd)
+        dram_dout_tmp = dram[dram_addr>>2];
+    else
+        dram_dout_tmp = 0;
+assign dram_dout = dram_dout_tmp;
+//assign dram_dout = dram[dram_addr>>2];
 endmodule
 

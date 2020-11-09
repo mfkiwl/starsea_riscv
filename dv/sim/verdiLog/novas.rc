@@ -281,9 +281,9 @@ Comment-FontBold = FALSE
 Comment-FontItalic = FALSE
 Comment-FontOverride = FALSE
 [FSM_Dlg-Print]
-Orientation = Landscape    
+Orientation = Landscape   
 [FileBrowser]
-nWaveOpenFsdbDirHistory = /home/IC/project/starsea_riscv/dv/sim/test.fsdb,/home/IC/project/github/starsea_riscv/dv/sim,/home/IC/project/github/starsea_riscv/dv/sim/test.fsdb,/home/IC/project/starsea_riscv/dv/sim,
+nWaveOpenFsdbDirHistory = /home/IC/project/github/starsea_riscv/dv/sim/test.fsdb,/home/IC/project/github/starsea_riscv/dv/sim,/home/IC/project/starsea_riscv/dv/sim/test.fsdb,/home/IC/project/starsea_riscv/dv/sim,
 [Form]
 version = Verdi3_K-2015.09-SP1-1
 wave/openWFile.fm = 100,48,823,696
@@ -416,8 +416,8 @@ saveFsdbStat = TRUE
 savePropStat = FALSE
 savePropDtl = TRUE
 [QtDialog]
-QwWarnMsgDlg = 662,441,600,250
-QwUserAskDlg = 802,510,324,134
+QwWarnMsgDlg = 664,467,600,250
+QwUserAskDlg = 806,562,324,134
 [Relationship]
 hideRecursiceNode = FALSE
 [Session Cache]
@@ -696,7 +696,7 @@ scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
 getSignalForm = 0 0 800 479 100 30 100 30
-viewPort = 0 28 1920 596 100 65
+viewPort = 0 28 1920 406 100 65
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 98
@@ -1177,7 +1177,7 @@ AddImportArgument = TRUE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -tcl
 [turboSchema_Printer_Options]
-Orientation = Landscape    
+Orientation = Landscape   
 [turbo_library]
 bdb_load_scope = 
 [verisity]
@@ -1189,7 +1189,7 @@ AddImportArgument = FALSE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -s
 [wave.0]
-viewPort = 0 28 1920 596 100 65
+viewPort = 0 28 1920 406 100 65
 [wave.1]
 viewPort = 127 219 960 332 100 65
 [wave.2]

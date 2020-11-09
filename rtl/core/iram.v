@@ -8,7 +8,8 @@ module iram
     input  [31:0]  inst_addr,
     output [31:0]  inst_dout
 );
-reg  [31:0] iram [0:1023];
+reg  [31:0] iram [0:8190];
+//reg  [31:0] iram [0:1023];
 
 initial begin
  $readmemh ("inst_data", iram);

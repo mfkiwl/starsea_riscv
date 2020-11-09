@@ -19,6 +19,8 @@ module starsea_core
   input          iram_we            ,
   input   [31:0] iram_waddr         , 
   input   [31:0] iram_wdata         ,
+  input          intr               ,
+
   output         reg_bus_we         ,
   output  [31:0] reg_bus_addr       ,
   output  [31:0] reg_bus_wdat       ,
@@ -130,6 +132,7 @@ wire        mret_bran_take      ;
 wire        misalign_bran_take  ;
 wire        j_misalign_bran_take;
 wire        jalr_misalign_bran_take;
+wire        intr_bran_take      ;
 wire [31:0] trap_addr           ;
 wire        csrr_rd_en          ;
 wire [31:0] csrr_rd_dat         ;
@@ -150,7 +153,8 @@ always@(posedge clk or negedge rst_n)
     if(~rst_n)  begin rs2_dat_d <= 32'b0;rs2_dat_d_pre <= 32'b0; end
     else        begin rs2_dat_d <= rs2_dat_d_pre;rs2_dat_d_pre <= rs2_dat; end
 
-assign  pc_jump_en =  misalign_bran_take |jalr_misalign_bran_take|j_misalign_bran_take | mret_bran_take | ebreak_bran_take | ecall_bran_take | jalr_bran_take | btype_bran_take;
+assign  pc_jump_en = intr_bran_take |   
+                    misalign_bran_take |jalr_misalign_bran_take|j_misalign_bran_take | mret_bran_take | ebreak_bran_take | ecall_bran_take | jalr_bran_take | btype_bran_take;
 
 pc u_pc
 (
@@ -159,6 +163,7 @@ pc u_pc
 .misalign_bran_take           (misalign_bran_take           ),
 .j_misalign_bran_take         (j_misalign_bran_take         ),
 .jalr_misalign_bran_take      (jalr_misalign_bran_take      ),
+.intr_bran_take               (intr_bran_take               ),
 .ecall_bran_take              (ecall_bran_take              ),
 .ebreak_bran_take             (ebreak_bran_take             ),
 .mret_bran_take               (mret_bran_take               ),
@@ -197,6 +202,7 @@ dram u_dram
 .dram_wdat                    (dram_wdat                    ),
 .dram_we                      (dram_we&(~dram_addr[31])     ),
 .dram_we_byte                 (dram_we_byte                 ),
+.dram_rd                      (~dram_addr[31] & dram_dout_wb),
 .dram_addr                    (dram_addr-'h4000_0000        ),
 .dram_dout                    (dram_dout_to_dbus            )
 );
@@ -395,6 +401,8 @@ machine u_machine(
 .j_misalign_bran_take         (j_misalign_bran_take         ),
 .jalr_misalign_exception      (jalr_misalign_exception      ),
 .jalr_misalign_bran_take      (jalr_misalign_bran_take      ),
+.intr                         (intr                         ),
+.intr_bran_take               (intr_bran_take               ),
 
 .csrr_rd_en                   (csrr_rd_en                   ),
 .csrr_rd_dat                  (csrr_rd_dat                  )

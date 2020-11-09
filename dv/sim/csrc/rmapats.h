@@ -1835,6 +1835,7 @@ extern "C" {
 void  hsM_0_0(UB  * pcode, scalar  val);
 void  hsM_0_1(UB  * pcode, scalar  val, U  I985, scalar  * I984);
 void  hsM_0_2(UB  * pcode);
+void  hsM_0_10(UB  * pcode, scalar  val);
 void  hsM_1_0(UB  * pcode, scalar  val);
 void  hsM_1_1(UB  * pcode, scalar  val, U  I985, scalar  * I984);
 void  hsM_1_2(UB  * pcode);
@@ -1844,6 +1845,25 @@ void  hsM_2_2(UB  * pcode);
 void  hsM_3_0(UB  * pcode, scalar  val);
 void  hsM_3_1(UB  * pcode, scalar  val, U  I985, scalar  * I984);
 void  hsM_3_2(UB  * pcode);
+void  hsM_4_0(UB  * pcode, scalar  val);
+void  hsM_4_1(UB  * pcode, scalar  val, U  I985, scalar  * I984);
+void  hsM_4_2(UB  * pcode);
+void  hsM_5_0(UB  * pcode, scalar  val);
+void  hsM_5_1(UB  * pcode, scalar  val, U  I985, scalar  * I984);
+void  hsM_5_2(UB  * pcode);
+void  hsM_9_0(UB  * pcode, scalar  val);
+void  hsM_9_1(UB  * pcode, scalar  val, U  I985, scalar  * I984);
+void  hsM_9_2(UB  * pcode);
+void  hsM_11_0(UB  * pcode, scalar  val);
+void  hsM_11_1(UB  * pcode, scalar  val, U  I985, scalar  * I984);
+void  hsM_11_2(UB  * pcode);
+void  hsM_12_0(UB  * pcode, scalar  val);
+void  hsM_12_1(UB  * pcode, scalar  val, U  I985, scalar  * I984);
+void  hsM_12_2(UB  * pcode);
+void  hsM_13_0(UB  * pcode, scalar  val);
+void  hsM_13_1(UB  * pcode, scalar  val, U  I985, scalar  * I984);
+void  hsM_13_2(UB  * pcode);
+void  hsM_13_5(UB  * pcode, UB  val);
 void  hsG_0(struct dummyq_struct * I971, EBLK  * I972, U  I702);
 #ifdef __cplusplus
 }

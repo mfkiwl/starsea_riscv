@@ -1,7 +1,7 @@
 Command: ./simv -l sim.log
 Chronologic VCS simulator copyright 1991-2014
 Contains Synopsys proprietary information.
-Compiler version I-2014.03_Full64; Runtime version I-2014.03_Full64;  Oct 21 00:43 2020
+Compiler version I-2014.03_Full64; Runtime version I-2014.03_Full64;  Nov 10 00:31 2020
 *Verdi3* Loading libsscore_vcs201403.so
 *Verdi3* : Enable Parallel Dumping.
 FSDB Dumper for VCS, Release Verdi3_K-2015.09-SP1-1, Linux x86_64/64bit, 01/21/2016
@@ -13,9 +13,16 @@ FSDB Dumper for VCS, Release Verdi3_K-2015.09-SP1-1, Linux x86_64/64bit, 01/21/2
 *Verdi3* : Begin traversing the MDAs under scope (tb), layer (0).
 *Verdi3* : Enable +mda and +packedmda dumping.
 *Verdi3* : End of traversing the MDAs.
-$finish called from file "../../tb/tb.v", line 24.
-$finish at simulation time           1000000000
+STARSEA RISCV CORE! HAPPY BE YOURSELF
+b*c= 2
+test
+receiverd a uart_rx interrupt
+help
+receiverd a uart_rx interrupt
+led test
+$finish called from file "../../tb/tb.v", line 136.
+$finish at simulation time          31044290000
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 1000000000 ps
-CPU Time:      1.580 seconds;       Data structure size:   0.1Mb
-Wed Oct 21 00:43:49 2020
+Time: 31044290000 ps
+CPU Time:     18.010 seconds;       Data structure size:   0.1Mb
+Tue Nov 10 00:31:37 2020
