@@ -1,5 +1,12 @@
 Command Line: /opt/Synopsys/Verdi2015/platform/LINUXAMD64/bin/Novas -f ../flist -sv
 uname(Linux IC 2.6.32-573.el6.x86_64 #1 SMP Wed Jul 1 18:23:37 EDT 2015 x86_64)
 file I/O: sysPorting.c:49, popen(), errno: 12, msg: Cannot allocate memory
-file I/O: sysPorting.c:49, popen(), errno: 12, msg: Cannot allocate memory
-au time 1644178.400939 813.031400 5621.943335 delta 5592207360 5592207360 total 5967384576 5967384576
+type= DS_SCOPE element= 1 field= 1
+VERILOG tb
+VERILOG u_fpga_top
+VERILOG u_starsea_core
+VERILOG u_alu
+-----
+second field= DebussyLib
+third field= alu
+au time 525196.167931 762.590069 2832.064461 delta 767979520 767979520 total 1143156736 1143156736

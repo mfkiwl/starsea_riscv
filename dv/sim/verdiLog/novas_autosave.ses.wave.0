@@ -15,19 +15,19 @@ openDirFile -d / "" "/home/IC/project/starsea_riscv/dv/sim/test.fsdb"
 signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
-windowTimeUnit 1ms
+windowTimeUnit 1ns
 
 ; waveform viewport range
-zoom 0.000000 31.354733 1m
-cursor 18.662670
-marker 5.422430
+zoom 0.000000 353500000.000000 1n
+cursor 111265330.000000
+marker 111265330.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 0
+top 8
 ; marker line index
-markerPos 12
+markerPos 8
 
 ; event list
 ; addEvent event_name event_expression
@@ -44,37 +44,69 @@ COMPLEX_EVENT_END
 
 ; toolbar current search type
 ; curSTATUS search_type
-curSTATUS ByChange
+curSTATUS ByValue
 
-
-aliasmapname uart_rx.cstate
-nalias bit0		5'b00010		NULL
-nalias bit6		5'b01000		NULL
-nalias bit1		5'b00011		NULL
-nalias bit4		5'b00110		NULL
-nalias bit7		5'b01001		NULL
-nalias bit5		5'b00111		NULL
-nalias idle		5'b00000		NULL
-nalias start		5'b00001		NULL
-nalias bit2		5'b00100		NULL
-nalias bit3		5'b00101		NULL
-nalias stop		5'b01010		NULL
 
 addGroup "G1"
-addGroup "G3"
 activeDirFile "" "/home/IC/project/starsea_riscv/dv/sim/test.fsdb"
-addSignal -h 15 /tb/u_fpga_top/u_uart_rx/rvld
-addSignal -h 15 -UNSIGNED -ASC -holdScope rdata[7:0]
-addSignal -h 15 -holdScope rxd
-addSignal -h 15 /tb/u_uart_tx/tvld
-addSignal -h 15 -UNSIGNED -ASC -holdScope tdata[7:0]
-addSignal -h 15 -holdScope trdy
-addSignal -h 15 /tb/u_fpga_top/u_starsea_core/reg_bus_we
-addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_addr[31:0]
-addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_wdat[31:0]
-addSignal -h 15 -holdScope reg_bus_we
-addSignal -h 15 -UNSIGNED -HEX -holdScope reg_bus_addr[31:0]
+addSignal -h 15 -UNSIGNED -HEX /tb/t0[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope a0[31:0]
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_id/r_type_ex
+addSignal -h 15 -UNSIGNED -HEX /tb/a1[31:0]
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/r_type_ex
+addSignal -h 15 -holdScope pc_jump_en
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_alu/r_type_ex
+addSignal -h 15 -UNSIGNED -HEX /tb/s0_fp[31:0]
 addGroup "G2"
+addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/u_iram/inst_addr[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope inst_dout[31:0]
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_id/jalr_ex
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_alu/jalr_ex
+addSignal -h 15 -UNSIGNED -HEX -holdScope add_res[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope pc_d[31:0]
+addSignal -h 15 -holdScope hazard_rs1
+addSignal -h 15 -UNSIGNED -HEX -holdScope rd_dat[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope imm_d[11:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope target_addr[31:0]
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_ctrl/dram_dout_wb
+addSignal -h 15 -UNSIGNED -HEX -holdScope load_data[31:0]
+addSignal -h 15 -UNSIGNED -HEX /tb/a5[31:0]
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_pc/pc_jump_en
+addSignal -h 15 -UNSIGNED -HEX -holdScope jal_imm[20:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope target_addr[31:0]
+addSignal -h 15 -holdScope jalr_bran_take
+addSignal -h 15 -holdScope ecall_bran_take
+addSignal -h 15 -holdScope ebreak_bran_take
+addSignal -h 15 -holdScope mret_bran_take
+addSignal -h 15 -holdScope jalr_inst
+addSignal -h 15 -holdScope halt_pc
+addSignal -h 15 -holdScope pc_jump_en
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/jalr_bran_take
+addSignal -h 15 -holdScope btype_bran_take
+addSignal -h 15 -holdScope dram_we
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_dram/dram_rd
+addSignal -h 15 -holdScope dram_rd
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/load_ex
+addSignal -h 15 -UNSIGNED -HEX -holdScope s_type_store_funct3_ex[2:0]
+addSignal -h 15 -holdScope store_ex
+addSignal -h 15 -holdScope i_type_ari_ex
+addSignal -h 15 /tb/u_fpga_top/u_starsea_core/u_alu/i_type_ari_ex
+addSignal -h 15 -UNSIGNED -HEX /tb/u_fpga_top/u_starsea_core/u_dram/dram_addr[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dram_addr[31:0]
+addSignal -h 15 -holdScope dram_we
+addSignal -h 15 -UNSIGNED -HEX -holdScope dram_addr[31:0]
+addSignal -h 15 -holdScope dram_rd
+addSignal -h 15 -UNSIGNED -HEX -holdScope dram[0:1023]
+addSignal -expanded -h 15 -UNSIGNED -HEX -holdScope dram_we_byte[3:0]
+addSignal -h 15 -holdScope dram_we_byte[3]
+addSignal -h 15 -holdScope dram_we_byte[2]
+addSignal -h 15 -holdScope dram_we_byte[1]
+addSignal -h 15 -holdScope dram_we_byte[0]
+addSignal -h 15 -holdScope dram_we_byte[1]
+addSignal -h 15 -holdScope dram_we_byte[0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dram_wdat[7:0]
+addSignal -h 15 -UNSIGNED -HEX /tb/a5[31:0]
+addGroup "G3"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

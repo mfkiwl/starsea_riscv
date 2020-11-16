@@ -320,7 +320,7 @@ alu u_alu
 .store_wdat                   (store_wdat                   ),
 .dram_we                      (dram_we                      ),
 .s_type_store_funct3_wb       (s_type_store_funct3_wb       ),
-.load_ex                      (load_ex                      ),
+.load_ex                      (load_ex & ~pc_jump_en        ),
 .i_type_load_funct3_ex        (i_type_load_funct3_ex        ),
 .dram_addr                    (dram_addr                    ),
 .dram_as                      (dram_as                      ),
@@ -332,8 +332,7 @@ alu u_alu
 .btype_ex                     (btype_ex & ~pc_jump_en       ),
 .btype_bran_take              (btype_bran_take              ),
 .b_type_funct3_ex             (b_type_funct3_ex             ),
-.jal_ex                       (jal_ex                       ),
-.jal_imm_ex                   (jal_imm_ex                   ),
+.jal_ex                       (jal_ex & ~pc_jump_en                      ),
 .jalr_ex                      (jalr_ex& ~pc_jump_en         ),
 .jalr_bran_take               (jalr_bran_take               ),
 .target_addr                  (target_addr                  )

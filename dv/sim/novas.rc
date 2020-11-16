@@ -281,14 +281,17 @@ Comment-FontBold = FALSE
 Comment-FontItalic = FALSE
 Comment-FontOverride = FALSE
 [FSM_Dlg-Print]
-Orientation = Landscape   
+Orientation = Landscape  
 [FileBrowser]
-nWaveOpenFsdbDirHistory = /home/IC/project/starsea_riscv/dv/sim/test.fsdb,/home/IC/project/github/starsea_riscv/dv/sim,/home/IC/project/github/starsea_riscv/dv/sim/test.fsdb,/home/IC/project/starsea_riscv/dv/sim,
+nWaveOpenFsdbDirHistory = /home/IC/project/github/starsea_riscv/dv/sim/test.fsdb,/home/IC/project/github/starsea_riscv/dv/sim,/home/IC/project/starsea_riscv/dv/sim/test.fsdb,/home/IC/project/starsea_riscv/dv/sim,
 [Form]
 version = Verdi3_K-2015.09-SP1-1
-wave/openWFile.fm = 100,48,823,696
 wave/createBus.fm = 100,100,737,620
 wave/activeFile.fm = 100,100,530,220
+openfile.fm = 104,152,723,532
+wave/openWFile.fm = 100,25,823,641
+wave/expression.fm = 100,100,710,423
+wave/debugDrop.fm = 100,100,570,334
 [General]
 autoSaveSession = FALSE
 TclAutoSource = 
@@ -419,8 +422,8 @@ savePropStat = FALSE
 savePropDtl = TRUE
 [QtDialog]
 QwInfoMsgDlg = 560,130,750,250
-QwWarnMsgDlg = 890,801,600,250
-QwUserAskDlg = 810,614,324,134
+QwWarnMsgDlg = 898,801,600,250
+QwUserAskDlg = 812,640,324,134
 [Relationship]
 hideRecursiceNode = FALSE
 [Session Cache]
@@ -599,7 +602,7 @@ pdmlCommand = ID_BLACK
 pdmlMacro = ID_BLACK
 font = COURIER12
 [Text.1]
-viewport = 0 25 1920 1004 45
+viewport = -2 25 1920 1004 45
 [TextPrinter]
 Orientation = Landscape
 Indicator = FALSE
@@ -1180,7 +1183,7 @@ AddImportArgument = TRUE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -tcl
 [turboSchema_Printer_Options]
-Orientation = Landscape   
+Orientation = Landscape  
 [turbo_library]
 bdb_load_scope = 
 [verisity]

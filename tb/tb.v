@@ -28,6 +28,7 @@ fpga_top u_fpga_top(
   .uart_txd     (tb_uart_rxd)
 );
 initial begin
+`ifndef COREMARK_TB
   tb_uart_tvld = 0;
   tb_uart_tdata = 0;
   #5ms;
@@ -130,9 +131,10 @@ initial begin
   end
   @(posedge tb_clk)
   tb_uart_tvld = 0;
+`endif
 
 
-  #15ms; 
+  #350ms; 
   $finish;
 end
 initial begin
@@ -203,6 +205,7 @@ if(tb.u_fpga_top.u_starsea_core.dram_we &( tb.u_fpga_top.u_starsea_core.dram_add
 end
 `endif
 ////////////////////complience testbench////////////////////////////////
+
 uart_tx #(.clk_freq ( 50_000_000 ),.baud_ratio ( 115200 )) u_uart_tx (
 
 .clk          ( tb.u_fpga_top.u_starsea_core.clk                ), // input

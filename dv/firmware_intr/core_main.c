@@ -16,7 +16,7 @@ main(void)
    c = *adr1;
    *adr = b*c*2+a;
 
-    ee_printf("b*c= %d\n",a);
+    ee_printf("b*c= %d\n",b*c*2);
     ee_printf("test\n");
 
     led_init();
