@@ -8,9 +8,17 @@ Three pipeline:
 
 Tools:
    1. riscv gun toolchain
-   2. python
+   2. python(use python scripts to convert firmware file(.ihex) to iram/dram data)
    3. vcs and verdi (if use other tools to run simualtion also ok,but need change /dv/run_regression)
 
+How to simulate firmware:
+   1. cd firmware
+   2. change code
+   3. make
+   4. cd ../sim
+   5. ../run
+   
+   
 How to simulate riscv compilience tests:
    1. cd riscv-compliance-master
    2. make RISCV_TARGET=starsea
@@ -19,12 +27,7 @@ How to simulate riscv compilience tests:
    5. gvim log
    6. search log file, all simulation is ok, no fail
  
-How to simulate firmware:
-   1. cd firmware
-   2. change code
-   3. make
-   4. cd ../sim
-   5. ../run
+
    
 
 
