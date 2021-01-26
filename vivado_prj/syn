@@ -36,6 +36,8 @@ set_property PACKAGE_PIN L19 [get_ports rst]
 set_property IOSTANDARD LVCMOS12 [get_ports rst]
 set_property PACKAGE_PIN BB21 [get_ports uart_txd]
 set_property IOSTANDARD LVCMOS18 [get_ports uart_txd]
+set_property PACKAGE_PIN AW25 [get_ports uart_rxd]
+set_property IOSTANDARD LVCMOS18 [get_ports uart_rxd]
 
 ################debug signals#########################
 create_debug_core u_ila_0 ila
