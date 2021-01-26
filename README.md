@@ -27,17 +27,18 @@ How to simulate riscv compilience tests:
    5. gvim log
    6. search log file, all simulation is ok, no fail
  
-
+How to build FPGA bitfile:
+   1. vivado2019   
+   2. open vivado tcl, source syn
    
-
-
+   
 Future plan:
    1. current fpga top only has a uart tx, prepare add more preipheral--------------------> uart rx added, iterrupt added
    2. current iram and dram preload firmware when bitsteam building, prepare add a module to updates firmware online.
    3. code optimize
    4. area optimize
    5. run coremark
-   6. update fpga syn scripts
+   6. update fpga syn scripts------------------------->done
 
 
 updates:
