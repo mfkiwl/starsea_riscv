@@ -28,7 +28,7 @@ How to simulate riscv compilience tests:
    6. search log file, all simulation is ok, no fail
  
 How to build FPGA bitfile:
-   1. vivado2019   
+   1. vivado2019, xilinx VCU118 board   
    2. open vivado tcl, source syn
    
    
