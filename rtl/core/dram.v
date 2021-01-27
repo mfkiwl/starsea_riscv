@@ -9,7 +9,7 @@ module dram
     input     [31:0]  dram_addr,
     output reg[31:0]  dram_dout
 );
-reg  [31:0] dram [0:1023];
+reg  [31:0] dram [0:8191];
 initial begin
  foreach(dram[i]) dram[i] = 0;
  #0.1us;
@@ -36,4 +36,3 @@ always@(*)
 assign dram_dout = dram_dout_tmp;
 //assign dram_dout = dram[dram_addr>>2];
 endmodule
-
