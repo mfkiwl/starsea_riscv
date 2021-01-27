@@ -32,105 +32,23 @@ initial begin
   tb_uart_tvld = 0;
   tb_uart_tdata = 0;
   #5ms;
-  @(posedge tb_clk)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "h";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "e";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "l";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "p";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "\n";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
+  uart_tx_cmd("help\n");
   #10ms; 
-
-  @(posedge tb_clk)
-  if(tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "l";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "e";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "d";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = " ";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "t";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "e";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "s";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "t";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
-
-  @(posedge tb_uart_trdy)begin
-  tb_uart_tvld = 1;
-  tb_uart_tdata = "\n";
-  end
-  @(posedge tb_clk)
-  tb_uart_tvld = 0;
+  uart_tx_cmd("led test\n");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test");
+  uart_tx_cmd("led test\n");
+  #10ms; 
+  uart_tx_cmd("led test\n");
 `endif
 
 
@@ -204,7 +122,26 @@ if(tb.u_fpga_top.u_starsea_core.dram_we &( tb.u_fpga_top.u_starsea_core.dram_add
   end
 end
 `endif
-////////////////////complience testbench////////////////////////////////
+////////////////////complience testbench end////////////////////////////////
+
+task uart_send_one_byte;
+input byte data;
+  @(posedge tb_clk)begin
+  wait(tb_uart_trdy)begin
+    tb_uart_tvld = 1;
+    tb_uart_tdata = data;
+    end
+  end
+  @(posedge tb_clk)
+  tb_uart_tvld = 0;
+  @(posedge tb_clk);
+endtask
+
+task uart_tx_cmd;
+  input string cmd;
+  foreach(cmd[i])
+  uart_send_one_byte(cmd[i]);
+endtask
 
 uart_tx #(.clk_freq ( 50_000_000 ),.baud_ratio ( 115200 )) u_uart_tx (
 
@@ -233,4 +170,3 @@ always@(posedge rvld)
     $write("%c",rdata);
 
 endmodule;
-
