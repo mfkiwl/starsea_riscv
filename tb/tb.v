@@ -51,9 +51,13 @@ initial begin
   uart_tx_cmd("led test\n");
 `endif
 
+`ifdef COREMARK_TB
+  #10s; 
+`endif
 
   #350ms; 
-  $finish;
+  $stop;
+  //$finish;
 end
 initial begin
     $fsdbDumpfile("test.fsdb");
