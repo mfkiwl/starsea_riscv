@@ -15,8 +15,8 @@ int alg_test()
    *adr = b*c*2+a;
    int t;
    t= b*c*2;
+   ee_printf("b*c=  %d\n",t);
    return t;
-    //ee_printf("b*c= %d\n",t);
 }
 int tt()
 {
