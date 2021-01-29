@@ -3,6 +3,8 @@ all:
 
 	riscv32-unknown-elf-objdump  -D test.elf > test.elf.objdump
 	riscv32-unknown-elf-objcopy  test.elf -O ihex test.elf.objcopy
+	python ../../riscv-compliance-master/gen_mif.py ./test.elf.objcopy
+	cp inst_data dram_data ../sim
 
 clean:
 	rm *elf *objdump *objcopy

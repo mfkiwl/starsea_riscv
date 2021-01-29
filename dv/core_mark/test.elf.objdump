@@ -4922,7 +4922,7 @@ Disassembly of section .sdata:
 	...
 
 40000074 <seed4_volatile>:
-40000074:	2710                	fld	fa2,8(a4)
+40000074:	03e8                	addi	a0,sp,460
 	...
 
 40000078 <default_num_contexts>:
