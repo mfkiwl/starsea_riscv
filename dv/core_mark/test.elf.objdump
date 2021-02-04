@@ -5,7 +5,7 @@ test.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <_start>:
-       0:	40008137          	lui	sp,0x40008
+       0:	40010137          	lui	sp,0x40010
        4:	30529073          	csrw	mtvec,t0
        8:	300022f3          	csrr	t0,mstatus
        c:	0082e293          	ori	t0,t0,8
@@ -38,7 +38,7 @@ Disassembly of section .text:
       70:	00008067          	ret
 
 00000074 <calc_func>:
-      74:	fe010113          	addi	sp,sp,-32 # 40007fe0 <seed5_volatile+0x7830>
+      74:	fe010113          	addi	sp,sp,-32 # 4000ffe0 <seed5_volatile+0xf830>
       78:	00812c23          	sw	s0,24(sp)
       7c:	00051403          	lh	s0,0(a0)
       80:	00112e23          	sw	ra,28(sp)

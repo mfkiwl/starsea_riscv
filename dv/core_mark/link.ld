@@ -3,7 +3,7 @@ ENTRY(_start)
 MEMORY
 {
     imem : org = 0, len = 32768
-    dmem : org = 0x40000000, len = 32768
+    dmem : org = 0x40000000, len = 65536
 }
 SECTIONS
 {
