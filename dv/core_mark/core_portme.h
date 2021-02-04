@@ -70,7 +70,7 @@ Original Author: Shay Gal-on
 #endif
 #ifndef COMPILER_FLAGS
 #define COMPILER_FLAGS \
-    "-o"//FLAGS_STR /* "Please put compiler flags here (e.g. -o3)" */
+    "-o2"//FLAGS_STR /* "Please put compiler flags here (e.g. -o3)" */
 #endif
 #ifndef MEM_LOCATION
 #define MEM_LOCATION "STACK"
@@ -198,7 +198,7 @@ void portable_fini(core_portable *p);
     && !defined(VALIDATION_RUN)
 #if (TOTAL_DATA_SIZE == 1200)
 #define PROFILE_RUN 1
-#elif (TOTAL_DATA_SIZE == 2000)
+#elif (TOTAL_DATA_SIZE == 250)
 #define PERFORMANCE_RUN 1
 #else
 #define VALIDATION_RUN 1
