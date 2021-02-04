@@ -7410,7 +7410,7 @@ Disassembly of section .rodata.str1.4:
 400004f4:	3a20                	fld	fs0,112(a2)
 400004f6:	2520                	fld	fs0,72(a0)
 400004f8:	00000a73          	0xa73
-400004fc:	6f2d                	lui	t5,0xb
+400004fc:	4f2d                	li	t5,11
 400004fe:	0032                	c.slli	zero,0xc
 40000500:	706d6f43          	fmadd.s	ft10,fs10,ft6,fa4,unknown
 40000504:	6c69                	lui	s8,0x1a
