@@ -1,8 +1,7 @@
 .global _start
 
 _start:
-  la sp,0x40010000
-#la sp,0x40008000
+  la sp,0x40008000
   csrw mtvec, t0
   csrr t0,mstatus
   or t0, t0, 0x8
