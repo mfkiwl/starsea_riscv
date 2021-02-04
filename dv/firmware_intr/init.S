@@ -1,9 +1,14 @@
 .global _start
 .global isr
+.global isr_exception
+
 _start:
-  la sp,0x40001000
+  la sp,0x40008000
   la t0,_trap_handler
   csrw mtvec, t0
+  csrr t0,mstatus
+  or t0, t0, 0x8
+  csrw mstatus, t0
   call main
 
 _trap_handler:
@@ -38,6 +43,8 @@ _trap_handler:
   sw t4, 108(sp)
   sw t5, 112(sp)
   sw t6, 116(sp)
+  
+  //call _trap_isr
   call isr
   lw t6, 116(sp)
   lw t5, 112(sp)
@@ -70,3 +77,17 @@ _trap_handler:
   lw gp, 4(sp)
   lw ra, 0(sp)
   mret
+  
+_trap_isr:
+  csrr t0,mcause
+  beqz t0,_trap_exception
+  call isr
+  mret
+  
+  
+_trap_exception:
+  call isr_exception
+  j _dead_loop
+  
+_dead_loop:
+  j _dead_loop

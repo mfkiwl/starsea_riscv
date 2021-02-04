@@ -8,10 +8,12 @@ module iram
     input  [31:0]  inst_addr,
     output [31:0]  inst_dout
 );
-reg  [31:0] iram [0:8190];
+reg  [31:0] iram [0:8191];
 //reg  [31:0] iram [0:1023];
 
 initial begin
+ foreach(iram[i]) iram[i] = 0;
+ #0.1us;
  $readmemh ("inst_data", iram);
 end
 always@(posedge clk)begin
@@ -22,4 +24,3 @@ end
 assign inst_dout = iram[inst_addr>>2];
 
 endmodule
-

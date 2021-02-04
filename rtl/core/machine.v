@@ -46,6 +46,7 @@ output  reg         intr_bran_take
 reg  [31:0] mtvec                        ;                             
 reg  [31:0] mcause                       ;                             
 reg  [31:0] mepc                         ;                             
+reg  [31:0] mstatus                      ;                             
 wire        mret_ex                      ;                             
 reg  [31:0] mtval                        ;
 reg  [31:0] mret_addr                    ;
@@ -100,7 +101,7 @@ always@(posedge clk or negedge rst_n)
 
 always@(posedge clk or negedge rst_n)
     if(~rst_n) 
-        mcause <= 0;
+        mcause <= 32'hffffffff;
     else if(system_ex & system_funct12_ex==0 &&system_funct3_ex==0)
         mcause <= 11;
     else if(system_ex & system_funct12_ex==1 &&system_funct3_ex==0)//ebreak
@@ -109,6 +110,8 @@ always@(posedge clk or negedge rst_n)
         mcause <= 4;
     else if(store_misalign_exception)
         mcause <= 6;
+    else if(misalign_exception)
+        mcause <= 0;
 
 always@(posedge clk or negedge rst_n)
     if(~rst_n) 
@@ -124,13 +127,15 @@ always@(posedge clk or negedge rst_n)
         csrr_rd_dat <= 0;
     else if(system_ex &&system_funct3_ex==2)
         case (system_funct12_ex)
+        12'h300 :  csrr_rd_dat <= mstatus;
+        12'h305 :  csrr_rd_dat <= mtvec;
         12'h341 :  csrr_rd_dat <= mepc;
         12'h342 :  csrr_rd_dat <= mcause;
         12'h343 :  csrr_rd_dat <= mtval;
         default:   csrr_rd_dat <= 0;
         endcase
-    else if(system_ex &&system_funct3_ex==1)
-        csrr_rd_dat <= mtvec;
+//    else if(system_ex &&system_funct3_ex==1)
+//        csrr_rd_dat <= mtvec;
     else
         csrr_rd_dat <= 0;
 
@@ -139,6 +144,14 @@ always@(posedge clk or negedge rst_n)
         mtvec <= 4;
     else if(system_ex && (system_funct3_ex==1) && system_funct12_ex == 'h305)
         mtvec <= hazard_rs1 ? rd_dat : rs1_dat_ex;
+
+always@(posedge clk or negedge rst_n)
+    if(~rst_n) 
+        mstatus <= 0;
+    else if(system_ex && (system_funct3_ex==1) && system_funct12_ex == 'h300)
+        mstatus <= hazard_rs1 ? rd_dat : rs1_dat_ex;
+
+wire MIE = mstatus[3];//global interrupt enable bits
 
 always@(posedge clk or negedge rst_n)
     if(~rst_n) 
@@ -151,7 +164,7 @@ always@(posedge clk or negedge rst_n)
         mepc <= hazard_rs1 ? rd_dat : rs1_dat_ex;
     else if (store_misalign_exception | load_misalign_exception | misalign_exception)
         mepc <= pc_ex;
-    else if(intr & ~intr_d)
+    else if(intr & ~intr_d & MIE)
         mepc <= pc_ex;
 
 reg j_misalign_exception_ex;
@@ -198,7 +211,7 @@ always@(posedge clk or negedge rst_n)
 always@(posedge clk or negedge rst_n)
     if(~rst_n) 
         intr_bran_take <= 0;
-    else if(intr & ~intr_d)
+    else if(intr & ~intr_d & MIE)
         intr_bran_take <= 1;
     else
         intr_bran_take <= 0;

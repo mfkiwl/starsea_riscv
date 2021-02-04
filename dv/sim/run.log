@@ -2,7 +2,7 @@ Command: vcs -sverilog -full64 -f ../flist +lint=TFIPC-L -P /opt/Synopsys/Verdi2
 /opt/Synopsys/Verdi2015/share/PLI/VCS/LINUX64/pli.a -l run.log +v2k -debug_all +notimingcheck \
 -lca +define+COREMARK_TB
                          Chronologic VCS (TM)
-         Version I-2014.03_Full64 -- Mon Nov 16 23:15:41 2020
+         Version I-2014.03_Full64 -- Fri Jan 29 00:21:24 2021
                Copyright (c) 1991-2014 by Synopsys Inc.
                          ALL RIGHTS RESERVED
 

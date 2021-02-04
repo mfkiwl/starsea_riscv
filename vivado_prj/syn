@@ -1,0 +1,104 @@
+
+set_part xcvu9p-flga2104-2L-e
+cd ./vivado_ip
+read_ip ./clk_wiz_0.xci
+synth_ip [get_ips clk_wiz_0] -force
+cd ..
+read_verilog "
+../rtl/soc/fpga_top.v
+../rtl/core/alu.v
+../rtl/core/ctrl.v
+../rtl/core/dram.v
+../rtl/core/id.v
+../rtl/core/iram.v
+../rtl/core/machine.v
+../rtl/core/pc.v
+../rtl/core/regs.v
+../rtl/core/starsea_core.v
+../rtl/core/wb.v
+"
+
+
+
+set_property file_type SystemVerilog [get_files  ../rtl/soc/fpga_top.v]
+set_property file_type SystemVerilog [get_files  ../rtl/core/iram.v]
+set_property file_type SystemVerilog [get_files  ../rtl/core/dram.v]
+set_property file_type SystemVerilog [get_files  ../rtl/core/regs.v]
+set_property file_type SystemVerilog [get_files  ../rtl/core/wb.v]
+
+synth_design -top fpga_top
+
+set_property PACKAGE_PIN E12 [get_ports clk_in1_p]
+set_property PACKAGE_PIN D12 [get_ports clk_in1_n]
+set_property IOSTANDARD DIFF_SSTL12 [get_ports clk_in1_p]
+set_property IOSTANDARD DIFF_SSTL12 [get_ports clk_in1_n]
+set_property PACKAGE_PIN L19 [get_ports rst]
+set_property IOSTANDARD LVCMOS12 [get_ports rst]
+set_property PACKAGE_PIN BB21 [get_ports uart_txd]
+set_property IOSTANDARD LVCMOS18 [get_ports uart_txd]
+set_property PACKAGE_PIN AW25 [get_ports uart_rxd]
+set_property IOSTANDARD LVCMOS18 [get_ports uart_rxd]
+
+################debug signals#########################
+create_debug_core u_ila_0 ila
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL false [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 1 [get_debug_cores u_ila_0]
+set_property port_width 1 [get_debug_ports u_ila_0/clk]
+connect_debug_port u_ila_0/clk [get_nets [list u_fpga_clk/inst/oscclk1 ]]
+set_property port_width 32 [get_debug_ports u_ila_0/probe0]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {reg_bus_addr[0]} {reg_bus_addr[1]} {reg_bus_addr[2]} {reg_bus_addr[3]} {reg_bus_addr[4]} {reg_bus_addr[5]} {reg_bus_addr[6]} {reg_bus_addr[7]} {reg_bus_addr[8]} {reg_bus_addr[9]} {reg_bus_addr[10]} {reg_bus_addr[11]} {reg_bus_addr[12]} {reg_bus_addr[13]} {reg_bus_addr[14]} {reg_bus_addr[15]} {reg_bus_addr[16]} {reg_bus_addr[17]} {reg_bus_addr[18]} {reg_bus_addr[19]} {reg_bus_addr[20]} {reg_bus_addr[21]} {reg_bus_addr[22]} {reg_bus_addr[23]} {reg_bus_addr[24]} {reg_bus_addr[25]} {reg_bus_addr[26]} {reg_bus_addr[27]} {reg_bus_addr[28]} {reg_bus_addr[29]} {reg_bus_addr[30]} {reg_bus_addr[31]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 32 [get_debug_ports u_ila_0/probe1]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
+connect_debug_port u_ila_0/probe1 [get_nets [list {reg_bus_wdat[0]} {reg_bus_wdat[1]} {reg_bus_wdat[2]} {reg_bus_wdat[3]} {reg_bus_wdat[4]} {reg_bus_wdat[5]} {reg_bus_wdat[6]} {reg_bus_wdat[7]} {reg_bus_wdat[8]} {reg_bus_wdat[9]} {reg_bus_wdat[10]} {reg_bus_wdat[11]} {reg_bus_wdat[12]} {reg_bus_wdat[13]} {reg_bus_wdat[14]} {reg_bus_wdat[15]} {reg_bus_wdat[16]} {reg_bus_wdat[17]} {reg_bus_wdat[18]} {reg_bus_wdat[19]} {reg_bus_wdat[20]} {reg_bus_wdat[21]} {reg_bus_wdat[22]} {reg_bus_wdat[23]} {reg_bus_wdat[24]} {reg_bus_wdat[25]} {reg_bus_wdat[26]} {reg_bus_wdat[27]} {reg_bus_wdat[28]} {reg_bus_wdat[29]} {reg_bus_wdat[30]} {reg_bus_wdat[31]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 32 [get_debug_ports u_ila_0/probe2]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
+connect_debug_port u_ila_0/probe2 [get_nets [list {reg_bus_rdat[0]} {reg_bus_rdat[1]} {reg_bus_rdat[2]} {reg_bus_rdat[3]} {reg_bus_rdat[4]} {reg_bus_rdat[5]} {reg_bus_rdat[6]} {reg_bus_rdat[7]} {reg_bus_rdat[8]} {reg_bus_rdat[9]} {reg_bus_rdat[10]} {reg_bus_rdat[11]} {reg_bus_rdat[12]} {reg_bus_rdat[13]} {reg_bus_rdat[14]} {reg_bus_rdat[15]} {reg_bus_rdat[16]} {reg_bus_rdat[17]} {reg_bus_rdat[18]} {reg_bus_rdat[19]} {reg_bus_rdat[20]} {reg_bus_rdat[21]} {reg_bus_rdat[22]} {reg_bus_rdat[23]} {reg_bus_rdat[24]} {reg_bus_rdat[25]} {reg_bus_rdat[26]} {reg_bus_rdat[27]} {reg_bus_rdat[28]} {reg_bus_rdat[29]} {reg_bus_rdat[30]} {reg_bus_rdat[31]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 32 [get_debug_ports u_ila_0/probe3]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
+connect_debug_port u_ila_0/probe3 [get_nets [list {u_starsea_core/pc[0]} {u_starsea_core/pc[1]} {u_starsea_core/pc[2]} {u_starsea_core/pc[3]} {u_starsea_core/pc[4]} {u_starsea_core/pc[5]} {u_starsea_core/pc[6]} {u_starsea_core/pc[7]} {u_starsea_core/pc[8]} {u_starsea_core/pc[9]} {u_starsea_core/pc[10]} {u_starsea_core/pc[11]} {u_starsea_core/pc[12]} {u_starsea_core/pc[13]} {u_starsea_core/pc[14]} {u_starsea_core/pc[15]} {u_starsea_core/pc[16]} {u_starsea_core/pc[17]} {u_starsea_core/pc[18]} {u_starsea_core/pc[19]} {u_starsea_core/pc[20]} {u_starsea_core/pc[21]} {u_starsea_core/pc[22]} {u_starsea_core/pc[23]} {u_starsea_core/pc[24]} {u_starsea_core/pc[25]} {u_starsea_core/pc[26]} {u_starsea_core/pc[27]} {u_starsea_core/pc[28]} {u_starsea_core/pc[29]} {u_starsea_core/pc[30]} {u_starsea_core/pc[31]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 32 [get_debug_ports u_ila_0/probe4]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
+connect_debug_port u_ila_0/probe4 [get_nets [list {u_starsea_core/inst_dout[0]} {u_starsea_core/inst_dout[1]} {u_starsea_core/inst_dout[2]} {u_starsea_core/inst_dout[3]} {u_starsea_core/inst_dout[4]} {u_starsea_core/inst_dout[5]} {u_starsea_core/inst_dout[6]} {u_starsea_core/inst_dout[7]} {u_starsea_core/inst_dout[8]} {u_starsea_core/inst_dout[9]} {u_starsea_core/inst_dout[10]} {u_starsea_core/inst_dout[11]} {u_starsea_core/inst_dout[12]} {u_starsea_core/inst_dout[13]} {u_starsea_core/inst_dout[14]} {u_starsea_core/inst_dout[15]} {u_starsea_core/inst_dout[16]} {u_starsea_core/inst_dout[17]} {u_starsea_core/inst_dout[18]} {u_starsea_core/inst_dout[19]} {u_starsea_core/inst_dout[20]} {u_starsea_core/inst_dout[21]} {u_starsea_core/inst_dout[22]} {u_starsea_core/inst_dout[23]} {u_starsea_core/inst_dout[24]} {u_starsea_core/inst_dout[25]} {u_starsea_core/inst_dout[26]} {u_starsea_core/inst_dout[27]} {u_starsea_core/inst_dout[28]} {u_starsea_core/inst_dout[29]} {u_starsea_core/inst_dout[30]} {u_starsea_core/inst_dout[31]} ]]
+create_debug_port u_ila_0 probe
+set_property port_width 1 [get_debug_ports u_ila_0/probe5]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe5]
+connect_debug_port u_ila_0/probe5 [get_nets [list u_starsea_core/u_pc/jal_inst ]]
+create_debug_port u_ila_0 probe
+set_property port_width 1 [get_debug_ports u_ila_0/probe6]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe6]
+connect_debug_port u_ila_0/probe6 [get_nets [list reg_bus_rd ]]
+create_debug_port u_ila_0 probe
+set_property port_width 1 [get_debug_ports u_ila_0/probe7]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe7]
+connect_debug_port u_ila_0/probe7 [get_nets [list reg_bus_we ]]
+create_debug_port u_ila_0 probe
+set_property port_width 1 [get_debug_ports u_ila_0/probe8]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe8]
+connect_debug_port u_ila_0/probe8 [get_nets [list u_starsea_core/u_pc/rst_n ]]
+create_debug_port u_ila_0 probe
+set_property port_width 1 [get_debug_ports u_ila_0/probe9]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe9]
+connect_debug_port u_ila_0/probe9 [get_nets [list u_uart_tx/txd ]]
+create_debug_port u_ila_0 probe
+set_property port_width 1 [get_debug_ports u_ila_0/probe10]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe10]
+connect_debug_port u_ila_0/probe10 [get_nets [list uart_rxd_IBUF ]]
+
+opt_design
+place_design
+phys_opt_design
+route_design
+write_bitstream -force starsea.bit
+write_debug_probes -force starsea.ltx
+
