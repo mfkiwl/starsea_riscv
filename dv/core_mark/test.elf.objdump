@@ -6790,7 +6790,7 @@ Disassembly of section .sdata:
 	...
 
 40000010 <seed4_volatile>:
-40000010:	0190                	addi	a2,sp,192
+40000010:	0191                	addi	gp,gp,4
 	...
 
 40000014 <seed3_volatile>:
